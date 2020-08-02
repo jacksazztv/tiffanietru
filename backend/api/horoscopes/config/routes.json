@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/horoscopes",
+      "handler": "horoscopes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/horoscopes",
+      "handler": "horoscopes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/horoscopes",
+      "handler": "horoscopes.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

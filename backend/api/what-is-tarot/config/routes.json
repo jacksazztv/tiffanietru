@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/what-is-tarot",
+      "handler": "what-is-tarot.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/what-is-tarot",
+      "handler": "what-is-tarot.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/what-is-tarot",
+      "handler": "what-is-tarot.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

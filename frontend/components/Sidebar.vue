@@ -1,0 +1,84 @@
+<template>
+    <div>
+        <b-form @submit.prevent="onSearch" class="mb-4">
+            <label class="sr-only" for="search">Search</label>
+            <b-form-input 
+                id="search"
+                name="search"
+                placeholder="Search…"
+                v-model="searchQuery">
+            </b-form-input>
+        </b-form>
+        <div class="p-4" style="background-color: rgba(0, 0, 0, 0.03)">
+            <h4>About</h4>
+            <div class="text-muted mb-2" v-html="$md.render(bio)"></div>
+            <b-button class="text-white" variant="primary" to="/about" size="sm">Read more</b-button>
+        </div>
+
+        <div class="p-4">
+            <a class="twitter-timeline" data-chrome="nofooter" data-tweet-limit="3" href="https://twitter.com/FoxyFury?ref_src=twsrc%5Etfw">Tweets by FoxyFury</a>
+        </div>
+
+        <div class="px-4">
+            <h4><small><font-awesome-icon :icon="['fa', 'tag']" /></small> Tags</h4>
+            <ul class="list-unstyled mb-0 d-flex flex-row flex-wrap" style="text-transform: lowercase">
+                <li v-for="tag in tags" :key="tag.id">
+                    <b-button :to="`/writings/tag/${tag.name}`" class="text-white mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
+                </li>
+            </ul>
+        </div>
+    </div>
+ 
+</template>
+
+<script>
+import tagsQuery from '~/apollo/queries/tag/tags.gql';
+import writingsQuery from '~/apollo/queries/pages/writings.gql';
+
+export default {
+    data() {
+        return {
+            bio: '',
+            tags: [],
+            searchQuery: ''
+        }
+    },
+    methods: {
+        onSearch() {
+            const search = this.searchQuery.trim();
+            if (search) {
+                this.$router.push({ path: '/writings/search', query: { q: search } });
+                this.searchQuery = '';
+            }
+        }
+    },
+    mounted() {
+        // Add script to embed twitter timeline
+        const twitterScript = document.createElement('script');
+        twitterScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+        twitterScript.setAttribute('charset', 'utf-8');
+        twitterScript.async = true;
+        document.head.appendChild(twitterScript);
+    },
+    apollo: {
+        tags: {
+            prefetch: true,
+            query: tagsQuery,
+            result(result) {
+                if (result.data.tags) {
+                    this.tags = result.data.tags;
+                }
+            }
+        },
+        writing: {
+            prefetch: true,
+            query: writingsQuery,
+            result(result) {
+                if (result.data.writing) {
+                    this.bio = result.data.writing.bio;
+                }
+            }
+        }
+    }
+}
+</script>

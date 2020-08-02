@@ -1,0 +1,7 @@
+query Writings {
+  writing {
+    title
+    subtitle
+    bio
+  }
+}

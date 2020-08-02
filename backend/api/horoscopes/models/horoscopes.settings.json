@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "horoscopes",
+  "info": {
+    "name": "Horoscopes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

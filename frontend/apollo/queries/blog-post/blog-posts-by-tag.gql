@@ -1,0 +1,21 @@
+query BlogPostsByTag($tag: String!, $start: Int, $limit: Int) {
+    blogPosts(where: { tags: { name: $tag } }, sort: "created_at:desc", start: $start, limit: $limit) {
+        created_at
+        updated_at
+        title
+        content
+        excerpt
+        image {
+            url
+        }
+        tags {
+            name
+        }
+        slug
+    }
+    blogPostsConnection(where: { tags: { name: $tag } }) {
+        aggregate {
+            count
+        }
+    }
+}

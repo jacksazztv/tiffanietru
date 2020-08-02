@@ -1,0 +1,70 @@
+<template>
+    <b-container class="py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-3 sub-heading">{{ title }}</h1>
+        </header>
+        <b-row>
+            <b-col sm="8">
+                <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
+                <div v-else>
+                    <div v-if="!blogPosts.length">
+                        <h2>No results found</h2>
+                    </div>
+                    <PostCard v-for="blogPost in blogPosts" :key="blogPost.id"
+                        :img-src="api_url + blogPost.image.url"
+                        :title="blogPost.title"
+                        :sub-title="blogPost.created_at"
+                        :text="blogPost.excerpt"
+                        :slug="blogPost.slug"
+                        :tags="blogPost.tags">
+                    </PostCard>
+                </div>
+            </b-col>
+            <b-col sm="4">
+                <Sidebar></Sidebar>
+            </b-col>
+        </b-row>
+    </b-container>
+</template>
+
+<script>
+import Sidebar from '~/components/Sidebar.vue';
+import PostCard from '~/components/PostCard.vue';
+import LoadingComponent from '~/components/LoadingComponent.vue';
+import tagQuery from '~/apollo/queries/blog-post/blog-posts-by-tag.gql';
+
+export default {
+    head() {
+        return {
+            title: this.title ? this.title.toUpperCase() : '',
+        };
+    },
+    data() {
+        return { 
+            title: this.$route.params.tag,
+            blogPosts: [],
+            numPages: 1,
+            pageSize: 25,
+            api_url: process.env.strapiBaseUri
+        }
+    },
+    apollo: {
+        blogPosts: {
+            prefetch: true,
+            query: tagQuery,
+            variables() {
+                return { tag: this.$route.params.tag }
+            },
+            result(result) {
+                this.blogPosts = result.data.blogPosts;
+                this.numPages = Math.ceil(result.data.blogPostsConnection.aggregate.count / this.pageSize);
+            }
+        }
+    },
+    components: {
+        PostCard,
+        Sidebar,
+        LoadingComponent
+    }
+}
+</script>

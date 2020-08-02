@@ -1,0 +1,7 @@
+query Home {
+  home {
+    title
+    subtitle
+    content
+  }
+}

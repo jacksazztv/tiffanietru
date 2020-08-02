@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "writings",
+  "info": {
+    "name": "Writings"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "richtext"
+    }
+  }
+}

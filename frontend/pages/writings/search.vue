@@ -1,0 +1,94 @@
+<template>
+    <b-container class="py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-3 sub-heading">{{ searchQuery }}</h1>
+        </header>
+        <b-row>
+            <b-col sm="8">
+                <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
+                <div v-else>
+                    <div v-if="!blogSearch.length">
+                        <h2>No results found</h2>
+                        <p>Please try again with different search terms.</p>
+                    </div>
+                    <PostCard v-for="blogPost in blogSearch" :key="blogPost.id"
+                        :img-src="api_url + blogPost.image.url"
+                        :title="blogPost.title"
+                        :sub-title="blogPost.created_at"
+                        :text="blogPost.excerpt"
+                        :highlight-text="searchQuery"
+                        :slug="blogPost.slug"
+                        :tags="blogPost.tags">
+                    </PostCard>
+                    <b-pagination-nav
+                        v-if="numPages > 1"
+                        :link-gen="linkGen"
+                        :number-of-pages="numPages">
+                    </b-pagination-nav>
+                </div>
+            </b-col>
+            <b-col sm="4">
+                <Sidebar></Sidebar>
+            </b-col>
+        </b-row>
+    </b-container>
+</template>
+
+<script>
+import Sidebar from '~/components/Sidebar.vue';
+import PostCard from '~/components/PostCard.vue';
+import LoadingComponent from '~/components/LoadingComponent.vue';
+import blogSearchQuery from '~/apollo/queries/blog-post/blog-search.gql';
+
+export default {
+    head() {
+        return {
+            title: this.searchQuery
+        };
+    },
+    computed: {
+        searchQuery() {
+            return this.$route.query.q;
+        }
+    },
+    methods: {
+        linkGen(page) {
+            return `?q=${encodeURIComponent(this.$route.query.q)}&page=${page}`;   
+        }
+    },
+    data() {
+        return { 
+            blogSearch: [],
+            page: parseInt(this.$route.query.page) || 1,
+            numPages: 1,
+            pageSize: 25,
+            api_url: process.env.strapiBaseUri
+        }
+    },
+    apollo: {
+        blogSearch: {
+            prefetch: true,
+            query: blogSearchQuery,
+            variables() {
+                return { 
+                    query: this.$route.query.q,
+                    sort: 'created_at:desc',
+                    start: (this.page - 1) * this.pageSize,
+                    limit: this.pageSize
+                };
+            },
+            result(result) {
+                if (result.data.blogSearch && result.data.blogSearchCount) {
+                    this.blogSearch = result.data.blogSearch;
+                    this.numPages = Math.ceil(result.data.blogSearchCount / this.pageSize);
+                }
+            }
+        }
+    },
+    components: {
+        PostCard,
+        Sidebar,
+        LoadingComponent
+    }
+}
+</script>

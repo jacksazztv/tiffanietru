@@ -1,0 +1,16 @@
+query BlogPosts($slug: String!) {
+    blogPostBySlug(slug: $slug) {
+        created_at
+        updated_at
+        title
+        content
+        excerpt
+        image {
+            url
+        }
+        tags {
+            name
+        }
+        slug
+    }
+}

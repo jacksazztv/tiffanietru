@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/writings",
+      "handler": "writings.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/writings",
+      "handler": "writings.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/writings",
+      "handler": "writings.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

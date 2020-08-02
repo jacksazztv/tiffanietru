@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/commissions",
+      "handler": "commissions.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/commissions",
+      "handler": "commissions.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/commissions",
+      "handler": "commissions.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

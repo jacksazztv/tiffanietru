@@ -1,0 +1,21 @@
+query BlogPosts($start: Int, $limit: Int) {
+    blogPosts(sort: "created_at:desc", start: $start, limit: $limit) {
+        created_at
+        updated_at
+        title
+        content
+        excerpt
+        image {
+            url
+        }
+        tags {
+            name
+        }
+        slug
+    }
+    blogPostsConnection {
+        aggregate {
+            count
+        }
+    }
+}

@@ -1,0 +1,7 @@
+query Horoscopes {
+  horoscope {
+    title
+    subtitle
+    content
+  }
+}
