@@ -1,14 +1,6 @@
 <template>
     <div>
-        <b-form @submit.prevent="onSearch" class="mb-4">
-            <label class="sr-only" for="search">Search</label>
-            <b-form-input 
-                id="search"
-                name="search"
-                placeholder="Search…"
-                v-model="searchQuery">
-            </b-form-input>
-        </b-form>
+        <SearchForm class="mb-4"></SearchForm>
         <div class="p-4" style="background-color: rgba(0, 0, 0, 0.03)">
             <h4>About</h4>
             <div class="text-muted mb-2" v-html="$md.render(bio)"></div>
@@ -32,6 +24,7 @@
 </template>
 
 <script>
+import SearchForm from '~/components/SearchForm.vue';
 import tagsQuery from '~/apollo/queries/tag/tags.gql';
 import writingsQuery from '~/apollo/queries/pages/writings.gql';
 
@@ -59,6 +52,9 @@ export default {
         twitterScript.setAttribute('charset', 'utf-8');
         twitterScript.async = true;
         document.head.appendChild(twitterScript);
+    },
+    components: {
+        SearchForm
     },
     apollo: {
         tags: {

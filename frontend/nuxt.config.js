@@ -94,6 +94,7 @@ export default {
       'BPaginationNav',
       'BForm',
       'BFormGroup',
+      'BInputGroup',
       'BFormInput',
       'BLink',
       'BAlert'
@@ -120,7 +121,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faLock', 'faGift', 'faTag', 'faUser'],
+      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch'],
       brands: ['faYoutube', 'faPatreon', 'faTwitter', 'faTwitch', 'faDiscord', 'faInstagram', 'faAmazon']
     }
   },
