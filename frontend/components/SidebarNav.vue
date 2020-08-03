@@ -22,7 +22,7 @@
                     <b-nav-item-dropdown
                       :toggle-class="['toggle-custom', { active: tarotMenuActive }]"
                       text="Tarot">
-                      <b-dropdown-item to="/tarot/whatis">
+                      <b-dropdown-item to="/tarot/what-is-tarot">
                           What is Tarot?
                       </b-dropdown-item>
                       <b-dropdown-item to="/tarot/horoscopes">
@@ -106,17 +106,26 @@
             </b-nav>
           </nav>
         </div>
+        <hr />
+        <div class="px-3 pb-2">
+          <SearchForm></SearchForm>
+        </div>
       </template>
     </b-sidebar>
 </template>
 
 <script>
+import SearchForm from '~/components/SearchForm.vue';
+
 export default {
   computed: {
     tarotMenuActive() {
       return this.$nuxt.$route.path.startsWith('/tarot');
     }
   },
+  components: {
+    SearchForm
+  }
 }
 </script>
 
