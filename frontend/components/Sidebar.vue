@@ -33,16 +33,6 @@ export default {
         return {
             bio: '',
             tags: [],
-            searchQuery: ''
-        }
-    },
-    methods: {
-        onSearch() {
-            const search = this.searchQuery.trim();
-            if (search) {
-                this.$router.push({ path: '/writings/search', query: { q: search } });
-                this.searchQuery = '';
-            }
         }
     },
     mounted() {
