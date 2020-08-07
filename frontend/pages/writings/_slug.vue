@@ -60,7 +60,7 @@ export default {
                 if (result.data.blogPostBySlug) {
                     this.blogPost = result.data.blogPostBySlug;
                     this.title = result.data.blogPostBySlug.title;
-                    this.description = result.data.blogPostBySlug.description;
+                    this.description = result.data.blogPostBySlug.excerpt;
                     this.image = result.data.blogPostBySlug.image.url;
                 }
             }
