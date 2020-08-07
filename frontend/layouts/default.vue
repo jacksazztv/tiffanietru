@@ -37,6 +37,11 @@ export default {
           content: 'en_US'
         },
         {
+          hid: 'og-description',
+          property: 'og:description',
+          content: this.seo.description
+        },
+        {
           hid: 'og-type',
           property: 'og:type',
           content: 'website'
@@ -49,7 +54,7 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: this.seo.image.url
+          content: this.api_url + this.seo.image.url
         },
         {
           hid: 'og-url',
@@ -83,7 +88,8 @@ export default {
     return {
       seo: {},
       showNavbar: true,
-      lastScrollPosition: 0
+      lastScrollPosition: 0,
+      api_url: process.env.strapiBaseUri,
     }
   },
   components: {

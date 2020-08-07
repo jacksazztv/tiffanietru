@@ -11,6 +11,7 @@
 
                     <div class="content mb-4" v-html="$md.render(blogPost.content)"></div>
 
+                    <h2 class="sub-heading">Comments</h2>
                     <div id="commento"></div>
                 </div>
             </b-col>
@@ -76,6 +77,16 @@ export default {
                     hid: 'og-title',
                     property: 'og:title',
                     content: `${this.title} - ${this.seo.siteName}`
+                },
+                {
+                    hid: 'og-description',
+                    property: 'og:description',
+                    content: this.blogPost.excerpt
+                },
+                {
+                    hid: 'og-image',
+                    property: 'og:image',
+                    content: this.api_url + this.seo.image.url
                 }
             ],
         }
