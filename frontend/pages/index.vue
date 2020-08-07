@@ -20,7 +20,7 @@
       <b-container>
         <h2 class="sub-heading mb-4">Latest Writings</h2>
         <b-row>
-          <b-col v-for="blogPost in blogPosts" :key="blogPost.id" sm>
+          <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" sm>
             <PostCard
               img-top
               :img-src="api_url + blogPost.image.url"
@@ -43,10 +43,20 @@ import Carousel from "~/components/Carousel.vue";
 import PostCard from "~/components/PostCard.vue";
 import blogPostsQuery from "~/apollo/queries/blog-post/blog-posts.gql";
 import homeQuery from "~/apollo/queries/pages/home.gql";
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
-  head: {
-    title: 'Home',
+  head() {
+    return {
+      title: `Home - ${this.seo.siteName}`,
+      meta: [
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: `Home - ${this.seo.siteName}`
+        }
+      ],
+    }
   },
   data() {
     return {
@@ -80,6 +90,10 @@ export default {
           this.content = result.data.home.content;
         }
       }
+    },
+    seo: {
+      prefetch: true,
+      query: seoQuery
     }
   }
 }

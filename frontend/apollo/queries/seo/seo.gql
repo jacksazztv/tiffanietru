@@ -1,0 +1,12 @@
+query SEO {
+  seo {
+    description
+    author
+    twitterUsername
+    image {
+      url
+    }
+    siteUrl
+    siteName
+  }
+}

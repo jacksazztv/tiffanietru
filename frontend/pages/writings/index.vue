@@ -7,7 +7,7 @@
                 <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
             </header>
             <b-row>
-                <b-col v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
+                <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
                     <PostCard
                         img-top
                         :img-src="api_url + blogPost.image.url"
@@ -30,7 +30,8 @@
                         :subTitle="blogPost.created_at"
                         :text="blogPost.excerpt"
                         :slug="blogPost.slug"
-                        :tags="blogPost.tags">
+                        :tags="blogPost.tags"
+                        responsive>
                     </PostCard>
                     <b-pagination-nav
                         v-if="numPages > 1"
@@ -53,10 +54,20 @@ import Sidebar from '~/components/Sidebar.vue';
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import blogPostsQuery from '~/apollo/queries/blog-post/blog-posts.gql';
 import writingsQuery from '~/apollo/queries/pages/writings.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
     head() {
-        return { title: this.title };
+        return {
+            title: `${this.title} - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `${this.title} - ${this.seo.siteName}`
+                }
+            ],
+        };
     },
     computed: {
         featuredPosts() {
@@ -80,7 +91,6 @@ export default {
             api_url: process.env.strapiBaseUri,
             page: parseInt(this.$route.query.page) || 1,
             pageSize: 25,
-            search: this.$route.query.search,
         }
     },
     apollo: {
@@ -107,6 +117,10 @@ export default {
                     this.subTitle = result.data.writing.subtitle;
                 }
             }
+        },
+        seo: {
+            prefetch: true,
+            query: seoQuery
         }
     },
     components: {

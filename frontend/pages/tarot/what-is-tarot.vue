@@ -32,10 +32,20 @@
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import tarotQuery from '~/apollo/queries/pages/whatis.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
     head() { 
-        return { title: this.title };
+        return { 
+            title: `${this.title} - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `${this.title} - ${this.seo.siteName}`
+                }
+            ],
+        };
     },
     data() {
         return {
@@ -55,6 +65,10 @@ export default {
                     this.content = result.data.whatIsTarot.content;
                 }
             }
+        },
+        seo: {
+            prefetch: true,
+            query: seoQuery
         }
     },
     components: {

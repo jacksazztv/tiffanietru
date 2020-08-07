@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "seos",
+  "info": {
+    "name": "SEO"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "twitterUsername": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "siteUrl": {
+      "type": "string"
+    },
+    "siteName": {
+      "type": "string"
+    }
+  }
+}

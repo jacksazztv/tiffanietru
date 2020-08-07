@@ -18,7 +18,8 @@
                         :text="blogPost.excerpt"
                         :highlight-text="searchQuery"
                         :slug="blogPost.slug"
-                        :tags="blogPost.tags">
+                        :tags="blogPost.tags"
+                        responsive>
                     </PostCard>
                     <b-pagination-nav
                         v-if="numPages > 1"
@@ -39,11 +40,19 @@ import Sidebar from '~/components/Sidebar.vue';
 import PostCard from '~/components/PostCard.vue';
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import blogSearchQuery from '~/apollo/queries/blog-post/blog-search.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
     head() {
         return {
-            title: this.searchQuery
+            title: `${this.searchQuery} - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `${this.searchQuery} - ${this.seo.siteName}`
+                }
+            ],
         };
     },
     computed: {
@@ -62,7 +71,7 @@ export default {
             page: parseInt(this.$route.query.page) || 1,
             numPages: 1,
             pageSize: 25,
-            api_url: process.env.strapiBaseUri
+            api_url: process.env.strapiBaseUri,
         }
     },
     apollo: {
@@ -83,6 +92,10 @@ export default {
                     this.numPages = Math.ceil(result.data.blogSearchCount / this.pageSize);
                 }
             }
+        },
+        seo: {
+            prefetch: true,
+            query: seoQuery
         }
     },
     components: {

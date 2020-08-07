@@ -18,10 +18,20 @@
 
 <script>
 import OFButton from '~/components/OFButton.vue';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
-    head: {
-        title: 'Links'
+    head() {
+        return {
+            title: `Links - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `Links - ${this.seo.siteName}`
+                }
+            ],
+        }
     },
     data() {
         return {
@@ -90,6 +100,12 @@ export default {
     },
     components: {
         OFButton
+    },
+    apollo: {
+        seo: {
+            prefetch: true,
+            query: seoQuery
+        }
     }
 }
 </script>

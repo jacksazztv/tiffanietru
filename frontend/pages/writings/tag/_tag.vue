@@ -16,7 +16,8 @@
                         :sub-title="blogPost.created_at"
                         :text="blogPost.excerpt"
                         :slug="blogPost.slug"
-                        :tags="blogPost.tags">
+                        :tags="blogPost.tags"
+                        responsive>
                     </PostCard>
                 </div>
             </b-col>
@@ -32,11 +33,19 @@ import Sidebar from '~/components/Sidebar.vue';
 import PostCard from '~/components/PostCard.vue';
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import tagQuery from '~/apollo/queries/blog-post/blog-posts-by-tag.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
     head() {
         return {
-            title: this.title ? this.title.toUpperCase() : '',
+            title: `${this.title} - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `${this.title} - ${this.seo.siteName}`
+                }
+            ],
         };
     },
     data() {
@@ -45,7 +54,7 @@ export default {
             blogPosts: [],
             numPages: 1,
             pageSize: 25,
-            api_url: process.env.strapiBaseUri
+            api_url: process.env.strapiBaseUri,
         }
     },
     apollo: {
@@ -59,6 +68,10 @@ export default {
                 this.blogPosts = result.data.blogPosts;
                 this.numPages = Math.ceil(result.data.blogPostsConnection.aggregate.count / this.pageSize);
             }
+        },
+        seo: {
+            prefetch: true,
+            query: seoQuery
         }
     },
     components: {

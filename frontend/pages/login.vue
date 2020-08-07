@@ -48,9 +48,22 @@
 
 <script>
 import { mapMutations } from 'vuex';
-import LoginMutation from '~/apollo/queries/auth/login.gql';
+import LoginMutation from '~/apollo/mutations/auth/login.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
+    head() {
+        return {
+            title: `Sign in - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `Sign in - ${this.seo.siteName}`
+                }
+            ],
+        };
+    },
     data() {
         return {
             showDismissibleAlert: false,
@@ -87,6 +100,12 @@ export default {
         ...mapMutations({
             setUser: 'auth/setUser',
         })
+    },
+    apollo: {
+        seo: {
+            prefetch: true,
+            query: seoQuery
+        }
     }
 }
 </script>

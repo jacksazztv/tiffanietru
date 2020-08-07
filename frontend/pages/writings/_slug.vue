@@ -8,7 +8,10 @@
                         <time class="d-block text-muted mb-2">{{ $dayjs(blogPost.created_at).format('MMM D YYYY, h:mma') }}</time>
                         <b-img :src="api_url + blogPost.image.url" alt="Image" fluid></b-img>
                     </header>
-                    <div class="content" v-html="$md.render(blogPost.content)"></div>
+
+                    <div class="content mb-4" v-html="$md.render(blogPost.content)"></div>
+
+                    <div id="commento"></div>
                 </div>
             </b-col>
             <b-col sm="4">
@@ -21,14 +24,27 @@
 <script>
 import Sidebar from '~/components/Sidebar.vue';
 import blogPostQuery from '~/apollo/queries/blog-post/blog-post.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
+    computed: {
+        username() {
+            return this.$store.getters['auth/username'];
+        }
+    },
     data() {
         return {
             title: '',
             blogPost: null,
-            api_url: process.env.strapiBaseUri
+            api_url: process.env.strapiBaseUri,
         }
+    },
+    mounted() {
+        // Load commento script.
+        const commentScript = document.createElement('script');
+        commentScript.setAttribute('src', 'https://commento.tiffanietru.com/js/commento.js');
+        commentScript.defer = true;
+        document.head.appendChild(commentScript);
     },
     apollo: {
         blogPostBySlug: {
@@ -43,14 +59,25 @@ export default {
                     this.title = result.data.blogPostBySlug.title;
                 }
             }
+        },
+        seo: {
+            prefetch: true,
+            query: seoQuery
         }
     },
     components: {
-        Sidebar
+        Sidebar,
     },
     head() {
         return {
-            title: this.title
+            title: `${this.title} - ${this.seo.siteName}`,
+            meta: [
+                {
+                    hid: 'og-title',
+                    property: 'og:title',
+                    content: `${this.title} - ${this.seo.siteName}`
+                }
+            ],
         }
     }
 }

@@ -20,16 +20,26 @@
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import aboutQuery from '~/apollo/queries/pages/about.gql';
+import seoQuery from '~/apollo/queries/seo/seo.gql';
 
 export default {
   head() {
-    return { title: this.title };
+    return { 
+      title: `${this.title} - ${this.seo.siteName}`,
+      meta: [
+        {
+          hid: 'og-title',
+          property: 'og:title',
+          content: `${this.title} - ${this.seo.siteName}`
+        }
+      ],
+    };
   },
   data() {
     return { 
       title: '',
       subTitle: '',
-      content: ''
+      content: '',
     };
   },
   apollo: {
@@ -43,6 +53,10 @@ export default {
           this.content = result.data.about.content;
         }
       }
+    },
+    seo: {
+      prefetch: true,
+      query: seoQuery
     }
   },
   components: {
