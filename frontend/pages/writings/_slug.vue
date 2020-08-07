@@ -36,6 +36,8 @@ export default {
     data() {
         return {
             title: '',
+            description: '',
+            image: '',
             blogPost: null,
             api_url: process.env.strapiBaseUri,
         }
@@ -58,6 +60,8 @@ export default {
                 if (result.data.blogPostBySlug) {
                     this.blogPost = result.data.blogPostBySlug;
                     this.title = result.data.blogPostBySlug.title;
+                    this.description = result.data.blogPostBySlug.description;
+                    this.image = result.data.blogPostBySlug.image.url;
                 }
             }
         },
@@ -81,12 +85,12 @@ export default {
                 {
                     hid: 'og-description',
                     property: 'og:description',
-                    content: this.blogPost.excerpt
+                    content: this.description
                 },
                 {
                     hid: 'og-image',
                     property: 'og:image',
-                    content: this.api_url + this.seo.image.url
+                    content: this.api_url + this.image
                 }
             ],
         }
