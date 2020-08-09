@@ -22,7 +22,6 @@
         <b-row>
           <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" sm>
             <PostCard
-              img-top
               :img-src="api_url + blogPost.image.url"
               :title="blogPost.title"
               :sub-title="blogPost.created_at"

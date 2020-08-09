@@ -2,9 +2,9 @@
   <div class="d-flex flex-column vh-100">
     <header>
       <Navbar isFixed :showNavbar="showNavbar" />
-      <SidebarNav />
     </header>
-    <main role="main" class="flex-shrink-0">
+    <main class="flex-shrink-0">
+      <SidebarNav />
       <nuxt />
     </main>
     <Footer class="mt-auto" />

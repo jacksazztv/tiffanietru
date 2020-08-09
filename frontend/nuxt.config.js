@@ -90,8 +90,7 @@ export default {
       'BFormInput',
       'BFormTextarea',
       'BLink',
-      'BAlert',
-      'BMedia'
+      'BAlert'
     ],
     directives: ['VBPopover']
   },
