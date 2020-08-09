@@ -2,42 +2,46 @@
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
     <div v-else>
         <b-jumbotron v-if="featuredPosts.length" fluid>
-            <header class="text-center mb-5">
-                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-                <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
-            </header>
-            <b-row>
-                <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
-                    <PostCard
-                        img-top
-                        :img-src="api_url + blogPost.image.url"
-                        :title="blogPost.title"
-                        :sub-title="blogPost.created_at"
-                        :text="blogPost.excerpt"
-                        :tags="blogPost.tags"
-                        :slug="blogPost.slug">
-                    </PostCard>
-                </b-col>
-            </b-row>
+            <section>
+                <header class="text-center mb-5">
+                    <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
+                    <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+                </header>
+                <b-row>
+                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
+                        <PostCard
+                            img-top
+                            :img-src="api_url + blogPost.image.url"
+                            :title="blogPost.title"
+                            :sub-title="blogPost.created_at"
+                            :text="blogPost.excerpt"
+                            :tags="blogPost.tags"
+                            :slug="blogPost.slug">
+                        </PostCard>
+                    </b-col>
+                </b-row>
+            </section>
         </b-jumbotron>
         <b-container class="pb-5">
             <b-row>
                 <b-col sm="8">
-                    <h2>Recent Posts</h2>
-                    <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
-                        :img-src="api_url + blogPost.image.url"
-                        :title="blogPost.title"
-                        :subTitle="blogPost.created_at"
-                        :text="blogPost.excerpt"
-                        :slug="blogPost.slug"
-                        :tags="blogPost.tags"
-                        responsive>
-                    </PostCard>
-                    <b-pagination-nav
-                        v-if="numPages > 1"
-                        :link-gen="linkGen"
-                        :number-of-pages="numPages">
-                    </b-pagination-nav>
+                    <section>
+                        <h2>Recent Posts</h2>
+                        <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
+                            :img-src="api_url + blogPost.image.url"
+                            :title="blogPost.title"
+                            :subTitle="blogPost.created_at"
+                            :text="blogPost.excerpt"
+                            :slug="blogPost.slug"
+                            :tags="blogPost.tags"
+                            responsive>
+                        </PostCard>
+                        <b-pagination-nav
+                            v-if="numPages > 1"
+                            :link-gen="linkGen"
+                            :number-of-pages="numPages">
+                        </b-pagination-nav>
+                    </section>
                 </b-col>
                 <b-col sm="4">
                     <Sidebar></Sidebar>

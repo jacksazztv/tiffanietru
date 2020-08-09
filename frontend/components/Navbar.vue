@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="sm" type="dark" variant="dark" class="shadow" :class="{ 'navbar-hidden': !showNavbar }" :fixed="isFixed ? 'top' : ''">
+  <b-navbar toggleable="lg" type="dark" variant="dark" class="shadow" :class="{ 'navbar-hidden': !showNavbar }" :fixed="isFixed ? 'top' : ''">
     <b-navbar-brand href="#">
       <img height="45" src="~/assets/foxyfurylogo.svg" alt="FoxyFury" />
     </b-navbar-brand>
@@ -43,12 +43,10 @@
           rel="noopener noreferrer"
           href="https://www.twitch.tv/foxyfurytv">
           <font-awesome-icon :icon="['fab', 'twitch']" />
-          <span class="d-inline d-sm-none">Twitch</span>
         </b-nav-item>
         <b-nav-item-dropdown v-b-popover.hover.bottom="'Instagram'">
           <template slot="button-content">
             <font-awesome-icon :icon="['fab', 'instagram']" />
-            <span class="d-inline d-sm-none">Instagram</span>
           </template>
           <b-dropdown-item
             target="_blank"
@@ -69,7 +67,6 @@
           rel="noopener noreferrer"
           href="https://twitter.com/FoxyFury">
           <font-awesome-icon :icon="['fab', 'twitter']" />
-          <span class="d-inline d-sm-none">Twitter</span>
         </b-nav-item>
         <b-nav-item
           v-b-popover.hover.bottom="'YouTube'"
@@ -77,7 +74,6 @@
           rel="noopener noreferrer"
           href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA">
           <font-awesome-icon :icon="['fab', 'youtube']" />
-          <span class="d-inline d-sm-none">YouTube</span>
         </b-nav-item>
         <b-nav-item
           v-b-popover.hover.bottom="'Patreon'"
@@ -85,7 +81,6 @@
           rel="noopener noreferrer"
           href="https://www.patreon.com/asmrtiff">
           <font-awesome-icon :icon="['fab', 'patreon']" />
-          <span class="d-inline d-sm-none">Patreon</span>
         </b-nav-item>
         <b-nav-item
           v-b-popover.hover.bottom="'OnlyFans'"
@@ -93,7 +88,6 @@
           rel="noopener noreferrer"
           href="https://onlyfans.com/foxyfury">
           <font-awesome-icon :icon="['fa', 'lock']" />
-          <span class="d-inline d-sm-none">OnlyFans</span>
         </b-nav-item>
       </b-navbar-nav>
 

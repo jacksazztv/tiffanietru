@@ -1,31 +1,33 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
     <b-container v-else class="py-5">
+        <section>
+            <header class="text-center mb-5">
+                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
+                <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+            </header>
 
-        <header class="text-center mb-5">
-            <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-            <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
-        </header>
+            <div class="video-wrapper my-4 mx-lg-4 float-lg-right">
+                <b-embed
+                    type="iframe"
+                    aspect="16by9"
+                    src="https://www.youtube.com/embed/azJN192Nch0"
+                    allowFullscreen>
+                </b-embed>
+            </div>
 
-        <div class="video-wrapper my-4 mx-lg-4 float-lg-right">
-            <b-embed
-                type="iframe"
-                aspect="16by9"
-                src="https://www.youtube.com/embed/azJN192Nch0"
-                allowFullscreen>
-            </b-embed>
-        </div>
+            <div class="mb-4" v-html="$md.render(content)"></div>
 
-        <div class="mb-4" v-html="$md.render(content)"></div>
+            <div>
+                <b-embed
+                    type="iframe"
+                    aspect="16by9"
+                    src="https://clips.twitch.tv/embed?clip=HappyKnottyBibimbapFeelsBadMan&parent=tiffanietru.com&autoplay=false"
+                    allowFullscreen>
+                </b-embed>
+            </div>
+        </section>
 
-        <div>
-            <b-embed
-                type="iframe"
-                aspect="16by9"
-                src="https://clips.twitch.tv/embed?clip=HappyKnottyBibimbapFeelsBadMan&parent=tiffanietru.com&autoplay=false"
-                allowFullscreen>
-            </b-embed>
-        </div>
     </b-container>
 </template>
 

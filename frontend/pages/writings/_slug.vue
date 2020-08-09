@@ -2,7 +2,7 @@
     <b-container class="py-5">
         <b-row>
             <b-col sm="8">
-                <div v-if="blogPost">
+                <article v-if="blogPost">
                     <header class="mb-4">
                         <h1 class="mb-0">{{ blogPost.title }}</h1>
                         <time class="d-block text-muted mb-2">{{ $dayjs(blogPost.created_at).format('MMM D YYYY, h:mma') }}</time>
@@ -11,9 +11,11 @@
 
                     <div class="content mb-4" v-html="$md.render(blogPost.content)"></div>
 
-                    <h2 class="sub-heading">Comments</h2>
-                    <div id="commento"></div>
-                </div>
+                    <section>
+                        <h2 class="sub-heading">Comments</h2>
+                        <div id="commento"></div>
+                    </section>
+                </article>
             </b-col>
             <b-col sm="4">
                 <Sidebar></Sidebar>

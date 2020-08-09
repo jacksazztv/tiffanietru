@@ -3,34 +3,38 @@
   <div v-else>
     <Carousel ref="slider" />
     <b-container class="py-5">
-      <header class="text-center mb-5">
-        <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-        <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
-      </header>
-      <b-row>
-        <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">
-        </b-col>
-        <b-col sm="4" order="1" order-sm="12" class="mb-4">
-          <b-img src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img>
-        </b-col>
-      </b-row>
+      <section>
+        <header class="text-center mb-5">
+          <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
+          <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+        </header>
+        <b-row>
+          <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">
+          </b-col>
+          <b-col sm="4" order="1" order-sm="12" class="mb-4">
+            <b-img src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img>
+          </b-col>
+        </b-row>        
+      </section>
     </b-container>
 
     <div class="bg-light py-5">
       <b-container>
-        <h2 class="sub-heading mb-4">Latest Writings</h2>
-        <b-row>
-          <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" sm>
-            <PostCard
-              :img-src="api_url + blogPost.image.url"
-              :title="blogPost.title"
-              :sub-title="blogPost.created_at"
-              :text="blogPost.excerpt"
-              :tags="blogPost.tags"
-              :slug="blogPost.slug">
-            </PostCard>
-          </b-col>
-        </b-row>
+        <section>
+          <h2 class="sub-heading mb-4">Latest Writings</h2>
+          <b-row>
+            <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" lg>
+              <PostCard
+                :img-src="api_url + blogPost.image.url"
+                :title="blogPost.title"
+                :sub-title="blogPost.created_at"
+                :text="blogPost.excerpt"
+                :tags="blogPost.tags"
+                :slug="blogPost.slug">
+              </PostCard>
+            </b-col>
+          </b-row>
+        </section>
       </b-container>
     </div>
   </div>

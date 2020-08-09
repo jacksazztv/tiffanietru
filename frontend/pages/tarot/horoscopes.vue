@@ -1,12 +1,14 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
     <b-container v-else class="py-5">
-        <header class="text-center mb-5">
-            <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-            <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
-        </header>
+        <section>
+            <header class="text-center mb-5">
+                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
+                <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+            </header>
 
-        <div v-html="$md.render(content)"></div>
+            <div v-html="$md.render(content)"></div>
+        </section>
     </b-container>
 </template>
 
