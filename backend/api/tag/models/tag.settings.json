@@ -13,8 +13,8 @@
       "type": "string"
     },
     "blog_posts": {
-      "collection": "blog-post",
       "via": "tags",
+      "collection": "blog-post",
       "dominant": true
     }
   }

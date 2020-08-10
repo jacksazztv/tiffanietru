@@ -45,8 +45,16 @@
       "default": "Published"
     },
     "tags": {
-      "via": "blog_posts",
-      "collection": "tag"
+      "collection": "tag",
+      "via": "blog_posts"
+    },
+    "previous": {
+      "model": "blog-post",
+      "via": "next"
+    },
+    "next": {
+      "model": "blog-post",
+      "via": "previous"
     }
   }
 }
