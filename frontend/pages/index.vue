@@ -6,7 +6,7 @@
       <section>
         <header class="text-center mb-5">
           <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-          <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+          <h2 v-if="subTitle" class="h5 sub-heading text-muted">{{ subTitle }}</h2>
         </header>
         <b-row>
           <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">

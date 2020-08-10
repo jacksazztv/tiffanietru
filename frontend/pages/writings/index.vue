@@ -1,16 +1,46 @@
 <template>
-    <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
+    <div v-if="$apollo.loading">
+        <b-jumbotron fluid>
+            <section>
+                <header class="text-center mb-5">
+                    <h1 class="display-3">Writings</h1>
+                    <h2 class="h5 sub-heading text-muted">My Blog</h2>
+                </header>
+                <b-row>
+                    <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
+                        <PostCardSkeleton class="flex-grow-1">
+                        </PostCardSkeleton>
+                    </b-col>
+                </b-row>
+            </section>
+        </b-jumbotron>
+        <b-container class="mb-5">
+            <b-row>
+                <b-col sm="8">
+                    <section>
+                        <h2>Recent Posts</h2>
+                        <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
+                    </section>
+                </b-col>
+                <b-col sm="4">
+                    <PostCardSkeleton></PostCardSkeleton>
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
     <div v-else>
         <b-jumbotron v-if="featuredPosts.length" fluid>
             <section>
                 <header class="text-center mb-5">
-                    <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-                    <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+                    <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
+                        {{ title }}
+                    </h1>
+                    <h2 v-if="subTitle" class="h5 sub-heading text-muted">{{ subTitle }}</h2>
                 </header>
                 <b-row>
                     <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
                         <PostCard
-                            img-top
+                            class="flex-grow-1"
                             :img-src="api_url + blogPost.image.url"
                             :title="blogPost.title"
                             :sub-title="blogPost.created_at"
@@ -22,7 +52,7 @@
                 </b-row>
             </section>
         </b-jumbotron>
-        <b-container class="pb-5">
+        <b-container class="mb-5">
             <b-row>
                 <b-col sm="8">
                     <section>
@@ -54,8 +84,8 @@
 
 <script>
 import PostCard from '~/components/PostCard.vue';
+import PostCardSkeleton from '~/components/PostCardSkeleton.vue';
 import Sidebar from '~/components/Sidebar.vue';
-import LoadingComponent from '~/components/LoadingComponent.vue';
 import blogPostsQuery from '~/apollo/queries/blog-post/blog-posts.gql';
 import writingsQuery from '~/apollo/queries/pages/writings.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
@@ -129,8 +159,8 @@ export default {
     },
     components: {
         PostCard,
+        PostCardSkeleton,
         Sidebar,
-        LoadingComponent
     },
 }
 </script>

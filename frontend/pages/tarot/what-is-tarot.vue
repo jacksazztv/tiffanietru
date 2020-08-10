@@ -4,7 +4,7 @@
         <section>
             <header class="text-center mb-5">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-                <h5 v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</h5>
+                <h2 v-if="subTitle" class="h5 sub-heading text-muted">{{ subTitle }}</h2>
             </header>
 
             <div class="video-wrapper my-4 mx-lg-4 float-lg-right">

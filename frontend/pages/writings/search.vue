@@ -5,7 +5,9 @@
         </header>
         <b-row>
             <b-col sm="8">
-                <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
+                <div v-if="$apollo.loading">
+                    <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
+                </div>
                 <div v-else>
                     <div v-if="!blogSearch.length">
                         <h2>No results found</h2>
@@ -38,7 +40,7 @@
 <script>
 import Sidebar from '~/components/Sidebar.vue';
 import PostCard from '~/components/PostCard.vue';
-import LoadingComponent from '~/components/LoadingComponent.vue';
+import PostCardSkeleton from '~/components/PostCardSkeleton.vue';
 import blogSearchQuery from '~/apollo/queries/blog-post/blog-search.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
 
@@ -100,8 +102,8 @@ export default {
     },
     components: {
         PostCard,
-        Sidebar,
-        LoadingComponent
+        PostCardSkeleton,
+        Sidebar
     }
 }
 </script>
