@@ -107,6 +107,37 @@ export default {
 }
 
 .content blockquote {
+    position: relative;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
     font-size: 1.25rem;
+    font-style: italic;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+.content blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+.content blockquote:after {
+    color: #ccc;
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    position: absolute;
+    right: 0;
+    bottom: -0.15em;
+}
+
+.content blockquote p {
+    display: inline;
 }
 </style>
