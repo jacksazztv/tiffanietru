@@ -105,4 +105,8 @@ export default {
     max-width: 100%;
     height: auto;
 }
+
+.content blockquote {
+    font-size: 1.25rem;
+}
 </style>
