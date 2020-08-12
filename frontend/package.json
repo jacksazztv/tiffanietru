@@ -28,6 +28,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@nuxtjs/fontawesome": "^1.1.2",
-    "@nuxtjs/svg": "^0.1.11"
+    "@nuxtjs/svg": "^0.1.11",
+    "nuxt-purgecss": "^1.0.0"
   }
 }

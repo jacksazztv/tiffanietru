@@ -39,7 +39,8 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    'nuxt-purgecss'
   ],
   /*
    ** Nuxt.js modules
