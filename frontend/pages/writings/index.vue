@@ -3,8 +3,10 @@
         <b-jumbotron fluid>
             <section>
                 <header class="text-center mb-5">
-                    <h1 class="display-3">Writings</h1>
-                    <h2 class="h5 sub-heading text-muted">My Blog</h2>
+                    <h1 class="display-3">
+                        Writings
+                        <small class="sub-heading text-muted">My Blog</small>
+                    </h1>
                 </header>
                 <b-row>
                     <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
@@ -34,8 +36,8 @@
                 <header class="text-center mb-5">
                     <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                         {{ title }}
+                        <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
                     </h1>
-                    <h2 v-if="subTitle" class="h5 sub-heading text-muted">{{ subTitle }}</h2>
                 </header>
                 <b-row>
                     <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>

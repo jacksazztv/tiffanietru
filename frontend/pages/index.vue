@@ -5,8 +5,10 @@
     <b-container class="py-5">
       <section>
         <header class="text-center mb-5">
-          <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-          <h2 v-if="subTitle" class="h5 sub-heading text-muted">{{ subTitle }}</h2>
+          <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
+            {{ title }}
+            <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
+          </h1>
         </header>
         <b-row>
           <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">

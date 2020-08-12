@@ -3,8 +3,10 @@
     <b-container v-else class="py-5">
         <section>
             <header class="text-center mb-5">
-                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">{{ title }}</h1>
-                <h2 v-if="subTitle" class="h5 text-muted sub-heading">{{ subTitle }}</h2>
+                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
+                    {{ title }}
+                    <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
+                </h1>
             </header>
             <div v-html="$md.render(content)"></div>
         </section>
