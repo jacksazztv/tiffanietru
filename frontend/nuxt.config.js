@@ -40,7 +40,7 @@ export default {
    */
   buildModules: [
     '@nuxtjs/fontawesome',
-    'nuxt-purgecss'
+    //'nuxt-purgecss'
   ],
   /*
    ** Nuxt.js modules
