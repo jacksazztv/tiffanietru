@@ -63,7 +63,6 @@ export default {
             script: [
                 {
                     src: 'https://platform.twitter.com/widgets.js',
-                    body: true,
                     async: true
                 }
             ]

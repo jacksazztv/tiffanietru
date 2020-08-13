@@ -7,7 +7,8 @@
     img-height="500"
     indicators
     fade>
-    <b-carousel-slide v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
+    <b-carousel-slide v-if="$apollo.loading" img-blank img-alt="Loading"></b-carousel-slide>
+    <b-carousel-slide v-else v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
       <template v-slot:img>
         <b-img
           class="d-block w-100 slide-img"
