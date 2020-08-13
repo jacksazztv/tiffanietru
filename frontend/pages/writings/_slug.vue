@@ -44,13 +44,6 @@ export default {
             api_url: process.env.strapiBaseUri,
         }
     },
-    mounted() {
-        // Load commento script.
-        const commentScript = document.createElement('script');
-        commentScript.setAttribute('src', 'https://commento.tiffanietru.com/js/commento.js');
-        commentScript.defer = true;
-        document.head.appendChild(commentScript);
-    },
     apollo: {
         blogPostBySlug: {
             prefetch: true,
@@ -95,6 +88,13 @@ export default {
                     content: this.api_url + this.image
                 }
             ],
+            script: [
+                {
+                    src: 'https://commento.tiffanietru.com/js/commento.js',
+                    body: true,
+                    defer: true
+                }
+            ]
         }
     }
 }

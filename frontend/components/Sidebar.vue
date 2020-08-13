@@ -35,14 +35,6 @@ export default {
             tags: [],
         }
     },
-    mounted() {
-        // Add script to embed twitter timeline
-        const twitterScript = document.createElement('script');
-        twitterScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
-        twitterScript.setAttribute('charset', 'utf-8');
-        twitterScript.async = true;
-        document.head.appendChild(twitterScript);
-    },
     components: {
         SearchForm
     },
@@ -64,6 +56,17 @@ export default {
                     this.bio = result.data.writing.bio;
                 }
             }
+        }
+    },
+    head() {
+        return {
+            script: [
+                {
+                    src: 'https://platform.twitter.com/widgets.js',
+                    body: true,
+                    async: true
+                }
+            ]
         }
     }
 }
