@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_buttons_fa_buttons",
+  "info": {
+    "name": "faButton",
+    "icon": "mouse-pointer"
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "youtube",
+        "patreon",
+        "twitter",
+        "twitch",
+        "discord",
+        "instagram",
+        "amazon"
+      ]
+    }
+  }
+}

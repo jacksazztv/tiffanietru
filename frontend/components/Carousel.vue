@@ -3,66 +3,65 @@
     id="carouselSlider"
     controls
     v-model="slide"
+    img-width="1500"
+    img-height="500"
     indicators
     fade>
-    <b-carousel-slide class="active">
+    <b-carousel-slide v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
       <template v-slot:img>
-        <img 
-          class="d-block img-fluid w-100 slide-img" 
-          width="1500" 
-          height="500" 
-          src="~/assets/youtube_banner.jpg"
-          alt="Banner" >
-        <div class="black-overlay" />
-      </template>
-      <div>
-        <h3>Subscribe to my ASMR YouTube channel</h3>
-        <p>New videos every week!</p>
-        <a class="btn btn-danger"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA">
-        <font-awesome-icon :icon="['fab', 'youtube']" /> YouTube</a>
-      </div>
-    </b-carousel-slide>
-    <b-carousel-slide>
-      <template v-slot:img>
-        <img
-          class="d-block img-fluid w-100 slide-img"
+        <b-img
+          class="d-block w-100 slide-img"
           width="1500"
           height="500"
-          src="~/assets/twitter_banner.jpg"
-          alt="Banner" >
-        <div class="black-overlay" />
+          :src="api_url + slide.image.url"
+          alt="Banner"
+          fluid>
+        </b-img>
+        <div class="black-overlay"></div>
       </template>
       <div>
-        <h3>Follow me on Twitch</h3>
-        <p>I stream a variety of content including ASMR, Just Chatting, Tarot, and Games!</p>
+        <h3 class="text-white">{{ slide.title }}</h3>
+        <p>{{ slide.text }}</p>
+        <b-button v-for="button in slide.buttons" :key="button.id"
+          target="_blank"
+          rel="noopener noreferrer"
+          :href="button.link"
+          :style="{ backgroundColor: button.color, borderColor: button.color }">
+          <font-awesome-icon :icon="['fab', button.icon]" />
+          {{ button.text }}
+        </b-button>
       </div>
-      <a
-        class="btn btn-dark"
-        style="background-color: var(--purple);"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.twitch.tv/foxyfurytv"
-      ><font-awesome-icon :icon="['fab', 'twitch']" /> Twitch</a>
     </b-carousel-slide>
   </b-carousel>
 </template>
 
 <script>
+import slideQuery from '~/apollo/queries/slide/slides.gql';
+
 export default {
   data() {
     return {
+      api_url: process.env.strapiBaseUri,
       slide: 0,
+    }
+  },
+  apollo: {
+    slides: {
+      prefetch: true,
+      query: slideQuery
     }
   }
 }
 </script>
 
 <style scoped>
-  h3 {
-    color: #fff;
+  .btn {
+    transition: opacity 0.2s ease-in-out;
+    margin: 0 5px;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
   }
 
   .black-overlay {

@@ -1,0 +1,17 @@
+query Slides {
+    slides {
+        id
+        image {
+            url
+        }
+        title
+        text
+        buttons {
+            id
+            link
+            text
+            color
+            icon
+        }
+    }
+}
