@@ -44,6 +44,8 @@
                         <PostCard
                             class="flex-grow-1"
                             :img-src="api_url + blogPost.image.url"
+                            :img-width="blogPost.image.width"
+                            :img-height="blogPost.image.height"
                             :title="blogPost.title"
                             :sub-title="blogPost.created_at"
                             :text="blogPost.excerpt"
@@ -61,6 +63,8 @@
                         <h2>Recent Posts</h2>
                         <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
                             :img-src="api_url + blogPost.image.url"
+                            :img-width="blogPost.image.width"
+                            :img-height="blogPost.image.height"
                             :title="blogPost.title"
                             :subTitle="blogPost.created_at"
                             :text="blogPost.excerpt"

@@ -6,7 +6,7 @@
         <b-row no-gutters>
             <b-col lg="6">
                 <nuxt-link :to="`/writings/${slug}`">
-                    <b-card-img :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
+                    <b-card-img :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
                 </nuxt-link>
             </b-col>
             <b-col lg="6" class="d-flex flex-column">
@@ -35,7 +35,7 @@
         tag="article"
         class="overflow-hidden shadow-sm mb-4">
         <nuxt-link :to="`/writings/${slug}`">
-            <b-card-img :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
+            <b-card-img :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
         </nuxt-link>
 
         <b-card-body>
@@ -73,6 +73,8 @@ export default {
     },
     props: {
         imgSrc: String,
+        imgWidth: Number,
+        imgHeight: Number,
         slug: String,
         title: String,
         subTitle: String,

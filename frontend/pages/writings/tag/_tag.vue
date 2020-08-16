@@ -14,6 +14,8 @@
                     </div>
                     <PostCard v-for="blogPost in blogPosts" :key="blogPost.id"
                         :img-src="api_url + blogPost.image.url"
+                        :img-width="blogPost.image.width"
+                        :img-height="blogPost.image.height"
                         :title="blogPost.title"
                         :sub-title="blogPost.created_at"
                         :text="blogPost.excerpt"

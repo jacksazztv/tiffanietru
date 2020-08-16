@@ -6,7 +6,7 @@
                     <header class="mb-4">
                         <h1 class="mb-0">{{ blogPost.title }}</h1>
                         <time class="d-block text-muted mb-2">{{ $dayjs(blogPost.created_at).format('MMM D YYYY, h:mma') }}</time>
-                        <b-img :src="api_url + blogPost.image.url" alt="Image" fluid></b-img>
+                        <b-img :width="blogPost.image.width" :height="blogPost.image.height" :src="api_url + blogPost.image.url" alt="Image" fluid></b-img>
                     </header>
 
                     <div class="content mb-4" v-html="$md.render(blogPost.content)"></div>

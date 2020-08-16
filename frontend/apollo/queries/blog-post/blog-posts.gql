@@ -7,6 +7,8 @@ query BlogPosts($start: Int, $limit: Int) {
         excerpt
         image {
             url
+            width
+            height
         }
         tags {
             name

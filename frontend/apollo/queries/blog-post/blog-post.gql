@@ -8,6 +8,8 @@ query BlogPosts($slug: String!) {
         excerpt
         image {
             url
+            width
+            height
         }
         tags {
             name
