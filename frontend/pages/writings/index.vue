@@ -40,7 +40,7 @@
                     </h1>
                 </header>
                 <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" sm>
+                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" md>
                         <PostCard
                             class="flex-grow-1"
                             :img-src="api_url + blogPost.image.url"

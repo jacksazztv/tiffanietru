@@ -6,7 +6,7 @@
         <b-row no-gutters>
             <b-col lg="6">
                 <nuxt-link :to="`/writings/${slug}`">
-                    <b-card-img :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
+                    <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
                 </nuxt-link>
             </b-col>
             <b-col lg="6" class="d-flex flex-column">
@@ -14,7 +14,7 @@
                     <b-card-title>
                         <nuxt-link :title="title" class="text-decoration-none" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
                     </b-card-title>
-                    <b-card-sub-title sub-title-tag="time" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
+                    <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
                     <div class="position-relative">
                         <b-card-text v-html="cardBody"></b-card-text>
                         <div class="read-more"></div>
@@ -35,14 +35,14 @@
         tag="article"
         class="overflow-hidden shadow-sm mb-4">
         <nuxt-link :to="`/writings/${slug}`">
-            <b-card-img :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img>
+            <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
         </nuxt-link>
 
         <b-card-body>
             <b-card-title>
                 <nuxt-link :title="title" class="text-decoration-none" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
             </b-card-title>
-            <b-card-sub-title sub-title-tag="time" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
+            <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
             <div class="position-relative">
                 <b-card-text v-html="cardBody"></b-card-text>
                 <div class="read-more"></div>

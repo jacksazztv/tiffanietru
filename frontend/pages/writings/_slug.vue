@@ -1,11 +1,12 @@
 <template>
-    <b-container class="py-5">
+    <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
+    <b-container v-else class="py-5">
         <b-row>
             <b-col sm="8">
                 <article v-if="blogPost">
                     <header class="mb-4">
                         <h1 class="mb-0">{{ blogPost.title }}</h1>
-                        <time class="d-block text-muted mb-2">{{ $dayjs(blogPost.created_at).format('MMM D YYYY, h:mma') }}</time>
+                        <time class="d-block text-muted mb-2" :datetime="blogPost.created_at">{{ $dayjs(blogPost.created_at).format('MMM D YYYY, h:mma') }}</time>
                         <b-img :width="blogPost.image.width" :height="blogPost.image.height" :src="api_url + blogPost.image.url" alt="Image" fluid></b-img>
                     </header>
 
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+import LoadingComponent from '~/components/LoadingComponent.vue';
 import Sidebar from '~/components/Sidebar.vue';
 import blogPostQuery from '~/apollo/queries/blog-post/blog-post.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
@@ -67,6 +69,7 @@ export default {
     },
     components: {
         Sidebar,
+        LoadingComponent
     },
     head() {
         return {
