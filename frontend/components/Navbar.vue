@@ -151,20 +151,4 @@ export default {
     box-shadow: none !important;
     transform: translate3d(0, -100%, 0);
   }
-
-  a {
-    color: rgba(255, 255, 255, 0.5) !important;
-  }
-
-  a.active {
-    color: #fff !important;
-  }
-
-  hr {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .toggle-custom {
-    color: #fff !important;
-  }
 </style>
