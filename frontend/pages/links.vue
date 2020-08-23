@@ -35,6 +35,7 @@ export default {
     },
     data() {
         return {
+            seo: {},
             links: [
                 {
                     name: 'Youtube 💤 ASMR Content',

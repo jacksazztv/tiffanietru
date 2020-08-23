@@ -2,7 +2,7 @@
     <b-form @submit.prevent="onSearch">
         <b-input-group>
             <template v-slot:append>
-                <b-button class="search-btn" type="submit">
+                <b-button variant="primary" type="submit">
                     <font-awesome-icon :icon="['fa', 'search']" />
                 </b-button>
             </template>
@@ -37,21 +37,6 @@ export default {
 </script>
 
 <style scoped>
-    .search-btn {
-        color: #495057 !important;
-        background-color: #e9ecef !important;
-        border: 1px solid #ced4da !important;
-        transition: opacity 0.2s ease-in-out;;
-    }
-
-    .search-btn:hover {
-        opacity: 0.75;
-    }
-
-    .search-btn:focus {
-        box-shadow: none !important;
-    }
-
     .form-control:focus {
         box-shadow: none !important;
         border-color: #ced4da !important;

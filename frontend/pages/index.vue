@@ -14,7 +14,7 @@
           <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">
           </b-col>
           <b-col sm="4" order="1" order-sm="12" class="mb-4">
-            <b-img src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img>
+            <b-img-lazy src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img-lazy>
           </b-col>
         </b-row>        
       </section>
@@ -25,7 +25,7 @@
         <section>
           <h2 class="sub-heading mb-4">Latest Writings</h2>
           <b-row>
-            <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" lg>
+            <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" md>
               <PostCard
                 :img-src="api_url + blogPost.image.url"
                 :img-width="blogPost.image.width"
@@ -72,6 +72,7 @@ export default {
       subTitle: '',
       content: '',
       blogPosts: [],
+      seo: {},
     }
   },
   components: {

@@ -66,6 +66,7 @@ export default {
     },
     data() {
         return {
+            seo: {},
             showDismissibleAlert: false,
             form: {
                 email: '',

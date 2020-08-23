@@ -44,6 +44,7 @@ export default {
             image: '',
             blogPost: null,
             api_url: process.env.strapiBaseUri,
+            seo: {},
         }
     },
     apollo: {

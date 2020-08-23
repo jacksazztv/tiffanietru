@@ -44,6 +44,7 @@ export default {
       title: '',
       subTitle: '',
       content: '',
+      seo: {},
     };
   },
   apollo: {

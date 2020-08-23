@@ -8,13 +8,42 @@
                     <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
                 </h1>
             </header>
-            <div v-html="$md.render(content)"></div>
+
+            <div v-html="$md.render(content)" class="mb-5"></div>
+
+            <b-carousel
+                id="testimonial-slider"
+                controls
+                indicators
+                img-width="2560"
+                img-height="1600">
+
+                <b-carousel-slide class="active">
+
+                    <template v-slot:img>
+                        <div style="position: relative">
+                            <b-img 
+                                src="~/assets/tarotbg.jpg"
+                                width="2560"
+                                height="1600"
+                                alt="Tarot BG"
+                                class="d-block w-100"
+                                fluid>
+                            </b-img>
+                            <TarotDeck></TarotDeck>
+                        </div>
+                    </template>
+
+                </b-carousel-slide>
+
+            </b-carousel>
         </section>
     </b-container>
 </template>
 
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
+import TarotDeck from '~/components/TarotDeck.vue';
 import testimonialsQuery from '~/apollo/queries/pages/testimonials.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
 
@@ -57,7 +86,8 @@ export default {
         }
     },
     components: {
-        LoadingComponent
+        LoadingComponent,
+        TarotDeck
     }
 }
 </script>

@@ -16,7 +16,7 @@
                 </b-row>
             </section>
         </b-jumbotron>
-        <b-container class="mb-5">
+        <b-container class="my-5">
             <b-row>
                 <b-col sm="8">
                     <section>
@@ -56,7 +56,7 @@
                 </b-row>
             </section>
         </b-jumbotron>
-        <b-container class="mb-5">
+        <b-container class="my-5">
             <b-row>
                 <b-col sm="8">
                     <section>

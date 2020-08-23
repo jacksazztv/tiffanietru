@@ -76,6 +76,7 @@ export default {
             numPages: 1,
             pageSize: 25,
             api_url: process.env.strapiBaseUri,
+            seo: {},
         }
     },
     apollo: {

@@ -1,13 +1,13 @@
 <template>
     <b-sidebar 
       id="sidebar"
-      bg-variant="dark"
+      bg-variant="white"
       text-variant="light"
       no-header
       backdrop>
       <template v-slot:default>
-        <header class="px-3 pt-2">
-          <b-img  height="60" src="~/assets/foxyfurylogo.svg" alt="Logo"></b-img>
+        <header class="px-3 pt-3">
+          <b-img  height="32" src="~/assets/tifftru.png" alt="Tiffanie Tru"></b-img>
         </header>
         <hr />
         <div class="px-3">
@@ -129,26 +129,23 @@ export default {
 }
 </script>
 
+
 <style scoped>
     a {
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(0, 0, 0, 0.5) !important;
     }
 
     a.active {
-        color: #fff !important;
-    }
-
-    hr {
-        border-color: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(0, 0, 0, 0.9) !important;
     }
 </style>
 
 <style>
     .toggle-custom {
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(0, 0, 0, 0.5) !important;
     }
 
     .toggle-custom.active {
-        color: #fff !important;
+        color: rgba(0, 0, 0, 0.9) !important;
     }
 </style>

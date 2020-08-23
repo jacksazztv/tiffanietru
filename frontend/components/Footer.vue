@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-muted small bg-dark">
+  <div class="text-muted small bg-dark">
     <b-container class="py-5 bg-secondary" fluid>
       <b-container>
         <b-row>
@@ -40,6 +40,8 @@
                 <li><a href="https://www.instagram.com/foxyfurytv"><font-awesome-icon :icon="['fab', 'instagram']" /></a></li>
                 <li><a href="https://twitter.com/FoxyFury"><font-awesome-icon :icon="['fab', 'twitter']" /></a></li>
                 <li><a href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
+                <li><a href="https://www.patreon.com/asmrtiff"><font-awesome-icon :icon="['fab', 'patreon']" /></a></li>
+                <li><a href="https://onlyfans.com/foxyfury"><font-awesome-icon :icon="['fa', 'lock']" /></a></li>
               </ul>
             </div>
           </b-col>
@@ -47,9 +49,9 @@
       </b-container>
     </b-container>
     <b-container class="py-5">
-      <span>© 2020 <a href="#">FoxyFury</a> | All Rights Reserved</span>
+      <span>© 2020 <a href="#">Tiffanie Tru</a> | All Rights Reserved</span>
     </b-container>
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -93,7 +95,7 @@ export default {
   }
 
   .social-links a:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 1);
   }
 
   ul, ol {

@@ -10,12 +10,16 @@
             </header>
 
             <div class="video-wrapper my-4 mx-lg-4 float-lg-right">
-                <b-embed
-                    type="iframe"
-                    aspect="16by9"
-                    src="https://www.youtube.com/embed/azJN192Nch0"
-                    allowFullscreen>
-                </b-embed>
+                <figure>
+                    <b-embed
+                        type="iframe"
+                        aspect="16by9"
+                        src="https://www.youtube.com/embed/azJN192Nch0"
+                        allowFullscreen>
+                    </b-embed>
+                    <figcaption class="text-center">My Tarot Reading for 2020</figcaption>
+                </figure>
+               
             </div>
 
             <div class="mb-4" v-html="$md.render(content)"></div>

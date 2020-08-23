@@ -1,7 +1,8 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="dark" class="shadow" :class="{ 'navbar-hidden': !showNavbar }" :fixed="isFixed ? 'top' : ''">
+<div>
+  <b-navbar toggleable="lg" type="light" variant="white">
     <b-navbar-brand href="#">
-      <img height="45" src="~/assets/foxyfurylogo.svg" alt="FoxyFury" />
+      <b-img height="32" src="~/assets/tifftru.png" alt="Tiffanie Tru"></b-img>
     </b-navbar-brand>
 
     <b-navbar-toggle target="sidebar"></b-navbar-toggle>
@@ -36,61 +37,6 @@
         </b-nav-item>
       </b-navbar-nav>
 
-      <b-navbar-nav class="mr-1">
-        <b-nav-item
-          v-b-popover.hover.bottom="'Twitch'"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.twitch.tv/foxyfurytv">
-          <font-awesome-icon :icon="['fab', 'twitch']" />
-        </b-nav-item>
-        <b-nav-item-dropdown v-b-popover.hover.bottom="'Instagram'">
-          <template slot="button-content">
-            <font-awesome-icon :icon="['fab', 'instagram']" />
-          </template>
-          <b-dropdown-item
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.instagram.com/foxyfurytv">
-            Instagram
-          </b-dropdown-item>
-          <b-dropdown-item
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.instagram.com/tiffsasmr">
-            ASMR Insta
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item
-          v-b-popover.hover.bottom="'Twitter'"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://twitter.com/FoxyFury">
-          <font-awesome-icon :icon="['fab', 'twitter']" />
-        </b-nav-item>
-        <b-nav-item
-          v-b-popover.hover.bottom="'YouTube'"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA">
-          <font-awesome-icon :icon="['fab', 'youtube']" />
-        </b-nav-item>
-        <b-nav-item
-          v-b-popover.hover.bottom="'Patreon'"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.patreon.com/asmrtiff">
-          <font-awesome-icon :icon="['fab', 'patreon']" />
-        </b-nav-item>
-        <b-nav-item
-          v-b-popover.hover.bottom="'OnlyFans'"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://onlyfans.com/foxyfury">
-          <font-awesome-icon :icon="['fa', 'lock']" />
-        </b-nav-item>
-      </b-navbar-nav>
-
       <b-navbar-nav v-if="username">
         <b-nav-item-dropdown right>
           <template slot="button-content">
@@ -106,12 +52,13 @@
         <b-nav-item to="/login" active>
           Sign in
         </b-nav-item>
-        <b-nav-item  class="border border-primary rounded" to="/register" active>
+        <b-nav-item  class="bg-primary rounded" link-classes="text-white" to="/register" active>
           Sign up
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
+</div>
 </template>
 
 <script>
@@ -135,20 +82,15 @@ export default {
       logout: 'auth/logout'
     })
   },
-  props: {
-    isFixed: Boolean,
-    showNavbar: Boolean
-  }
 }
 </script>
 
-<style scoped>
+<style>
   .navbar {
-    transition: all 0.1s ease-in-out;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .navbar-hidden {
-    box-shadow: none !important;
-    transform: translate3d(0, -100%, 0);
+  .nav-link, .nav-link-dropdown-toggle {
+    font-weight: 500;
   }
 </style>
