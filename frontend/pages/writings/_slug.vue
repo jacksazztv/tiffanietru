@@ -14,7 +14,7 @@
 
                     <section>
                         <h2 class="sub-heading">Comments</h2>
-                        <div id="commento"></div>
+                        <Comments></Comments>
                     </section>
                 </article>
             </b-col>
@@ -28,6 +28,7 @@
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import Sidebar from '~/components/Sidebar.vue';
+import Comments from '~/components/Comments.vue';
 import blogPostQuery from '~/apollo/queries/blog-post/blog-post.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
 
@@ -70,7 +71,8 @@ export default {
     },
     components: {
         Sidebar,
-        LoadingComponent
+        LoadingComponent,
+        Comments
     },
     head() {
         return {
@@ -92,13 +94,6 @@ export default {
                     content: this.api_url + this.image
                 }
             ],
-            script: [
-                {
-                    hid: 'commento',
-                    src: 'https://commento.tiffanietru.com/js/commento.js',
-                    defer: true
-                }
-            ]
         }
     }
 }
