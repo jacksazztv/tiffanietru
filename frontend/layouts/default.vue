@@ -1,15 +1,15 @@
 <template>
-  <div class="d-flex flex-column vh-100">
+  <div class="d-flex flex-column justify-content-between vh-100">
     <header>
       <SocialBar />
       <Navbar />
     </header>
-    <main class="flex-shrink-0">
+    <main>
       <SidebarNav />
       <nuxt />
     </main>
     <footer>
-      <Footer class="mt-auto" />
+      <Footer />
     </footer>
   </div>
 </template>
