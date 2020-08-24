@@ -62,6 +62,7 @@ export default {
         return {
             script: [
                 {
+                    hid: 'twitter',
                     src: 'https://platform.twitter.com/widgets.js',
                     async: true
                 }

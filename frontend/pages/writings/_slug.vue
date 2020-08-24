@@ -94,6 +94,7 @@ export default {
             ],
             script: [
                 {
+                    hid: 'commento',
                     src: 'https://commento.tiffanietru.com/js/commento.js',
                     defer: true
                 }
