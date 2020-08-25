@@ -33,10 +33,17 @@
     <b-card v-else
         no-body
         tag="article"
-        class="overflow-hidden shadow-sm mb-4">
+        class="overflow-hidden w-100 shadow-sm mb-4">
+
+        
         <nuxt-link :to="`/writings/${slug}`">
-            <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
+            <div class="aspect-ratio-box">
+                <div class="aspect-ratio-box-inner">
+                    <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 d-block w-100" fluid></b-card-img-lazy>
+                </div>
+            </div>
         </nuxt-link>
+
 
         <b-card-body>
             <b-card-title>
@@ -86,34 +93,52 @@ export default {
 }
 </script>
 
-<style scoped>    
-    .card-img {
-        object-fit: cover !important;
-        transition: opacity 0.2s ease-in-out;
-    }
+<style scoped>
+.aspect-ratio-box {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.03);
+}
 
-    .card-img:hover {
-        opacity: 0.75;
-    }
+.aspect-ratio-box-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
-    .card-title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+.card-img {
+    object-fit: cover !important;
+    transition: opacity 0.2s ease-in-out;
+}
 
-    .card-text {
-        margin-bottom: 0 !important;
-    }
+.card-img:hover {
+    opacity: 0.75;
+}
 
-    .read-more {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        height: 2rem;
-        background-image: linear-gradient(to bottom, transparent, white);
-    }
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-text {
+    margin-bottom: 0 !important;
+}
+
+.read-more {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 2rem;
+    background-image: linear-gradient(to bottom, transparent, white);
+}
 </style>
