@@ -1,0 +1,22 @@
+/* Commento CSS overrides */
+.commento-root .commento-submit-button {
+    background: #ea4c89;
+
+}
+
+.commento-root .commento-button {
+    box-shadow: none;
+}
+
+.commento-root a{
+    color: #ea4c89;
+}
+
+.commento-root .commento-sort-policy-buttons-container .commento-sort-policy-buttons .commento-sort-policy-button-selected {
+    color: #000;
+}
+
+.commento-root .commento-login-box-container .commento-login-box .commento-email-container .commento-email .commento-email-button,
+.commento-root .commento-login-box-container .commento-login-box .commento-email-container .commento-email .commento-email-button:hover {
+    color: #ea4c89;
+}
