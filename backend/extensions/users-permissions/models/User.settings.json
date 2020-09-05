@@ -56,6 +56,10 @@
     "purchases": {
       "via": "user",
       "collection": "purchase"
+    },
+    "orders": {
+      "via": "user",
+      "collection": "order"
     }
   }
 }
