@@ -1,8 +1,15 @@
 'use strict';
 
-/**
- * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
- * to customize this controller
- */
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
-module.exports = {};
+const PAYPAL_CLIENT = 'PAYPAL_SANDBOX_CLIENT';
+const PAYPAL_SECRET = 'PAYPAL_SANDBOX_SECRET';
+
+const PAYPAL_OAUTH_API = 'https://api.sandbox.paypal.com/v1/oauth2/token/';
+const PAYPAL_ORDER_API = 'https://api.sandbox.paypal.com/v2/checkout/orders/';
+
+module.exports = {
+    async createPaypalTransaction(ctx) {
+        // TODO
+    }
+};
