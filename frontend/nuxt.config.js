@@ -102,7 +102,7 @@ export default {
     cookieAttributes: {
       expires: 30,
       path: '/',
-      sameSite: 'strict',
+      sameSite: 'Lax',
     },
     clientConfigs: {
       default: {
