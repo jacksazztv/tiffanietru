@@ -5,27 +5,23 @@
             <header class="text-center mb-5">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                     {{ title }}
-                    <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
+                    <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
                 </h1>
             </header>
 
-            <div v-html="$md.render(content)" class="mb-5"></div>
-
-            <TestimonialsSlider></TestimonialsSlider>
+            <div class="text-center" v-html="$md.render(content)"></div>
         </section>
     </b-container>
 </template>
 
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
-import TestimonialsSlider from '~/components/TestimonialsSlider.vue';
-import testimonialsQuery from '~/apollo/queries/pages/testimonials.gql';
+import horoscopesQuery from '~/apollo/queries/pages/horoscopes.gql';
 import seoQuery from '~/apollo/queries/seo/seo.gql';
-
 
 export default {
     head() {
-        return {
+        return { 
             title: `${this.title} - ${this.seo.siteName}`,
             meta: [
                 {
@@ -41,20 +37,21 @@ export default {
             title: '',
             subTitle: '',
             content: '',
+            seo: {},
         };
     },
     apollo: {
-        testimonial: {
+        horoscope: {
             prefetch: true,
-            query: testimonialsQuery,
+            query: horoscopesQuery,
             result(result) {
-                if (result.data.testimonial) {
-                    this.title = result.data.testimonial.title;
-                    this.subTitle = result.data.testimonial.subTitle;
-                    this.content = result.data.testimonial.content;
+                if (result.data.horoscope) {
+                    this.title = result.data.horoscope.title;
+                    this.subTitle = result.data.horoscope.subtitle;
+                    this.content = result.data.horoscope.content;
                 }
             }
-        },
+        }, 
         seo: {
             prefetch: true,
             query: seoQuery
@@ -62,7 +59,6 @@ export default {
     },
     components: {
         LoadingComponent,
-        TestimonialsSlider
     }
 }
 </script>

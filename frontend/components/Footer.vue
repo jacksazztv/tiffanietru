@@ -8,10 +8,10 @@
             <ul>
               <li><nuxt-link to="/">Home</nuxt-link></li>
               <li><nuxt-link to="/about">About</nuxt-link></li>
-              <li><nuxt-link to="/tarot/what-is-tarot">What is tarot?</nuxt-link></li>
-              <li><nuxt-link to="/tarot/horoscopes">Horoscopes</nuxt-link></li>
-              <li><nuxt-link to="/tarot/commissions">Commissions</nuxt-link></li>
-              <li><nuxt-link to="/tarot/testimonials">Testimonials</nuxt-link></li>
+              <li><nuxt-link to="/what-is-tarot">What is tarot?</nuxt-link></li>
+              <li><nuxt-link to="/horoscopes">Horoscopes</nuxt-link></li>
+              <li><nuxt-link to="/commissions">Commissions</nuxt-link></li>
+              <li><nuxt-link to="/testimonials">Testimonials</nuxt-link></li>
               <li><nuxt-link to="/writings">Writings</nuxt-link></li>
               <li><nuxt-link to="/links">Links</nuxt-link></li>
             </ul>

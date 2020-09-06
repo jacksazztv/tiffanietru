@@ -8,7 +8,7 @@
                     <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
                 </h1>
             </header>
-            <div v-html="$md.render(content)"></div>
+            <div class="text-center" v-html="$md.render(content)"></div>
         </section>
     </b-container>
 </template>
@@ -28,7 +28,7 @@ export default {
                     property: 'og:title',
                     content: `${this.title} - ${this.seo.siteName}`
                 }
-            ]
+            ],
         };
     },
     data() {

@@ -16,16 +16,16 @@
           About
         </b-nav-item>
         <b-nav-item-dropdown text="Tarot" :class="{ active: tarotMenuActive }">
-          <b-dropdown-item to="/tarot/what-is-tarot">
+          <b-dropdown-item to="/what-is-tarot">
             What is Tarot?
           </b-dropdown-item>
-          <b-dropdown-item to="/tarot/horoscopes">
+          <b-dropdown-item to="/horoscopes">
             Horoscopes
           </b-dropdown-item>
-          <b-dropdown-item to="/tarot/commissions">
+          <b-dropdown-item to="/commissions">
             Commissions
           </b-dropdown-item>
-          <b-dropdown-item to="/tarot/testimonials">
+          <b-dropdown-item to="/testimonials">
             Testimonials
           </b-dropdown-item>
         </b-nav-item-dropdown>
@@ -70,7 +70,7 @@ export default {
       return this.$store.getters['auth/username'];
     },
     tarotMenuActive() {
-      return this.$nuxt.$route.path.startsWith('/tarot');
+      return ['/what-is-tarot', '/horoscopes', '/commissions', '/testimonials'].includes(this.$nuxt.$route.path);
     }
   },
   methods: {
