@@ -23,7 +23,7 @@
                         <b-col v-if="blogPost.previous"  class="text-left">
                             <nuxt-link class="text-muted" :to="`/writings/${blogPost.previous.slug}`" rel="prev">
                                 <small class="post-nav-label">
-                                    <font-awesome-icon :icon="['fa', 'angle-double-left']" /> Previous
+                                    <font-awesome-icon style="margin-bottom: 0.03rem;" :icon="['fa', 'angle-double-left']" /> Previous
                                 </small>
                                 <span class="post-nav-title">{{ blogPost.previous.title }}</span>
                             </nuxt-link>
@@ -31,7 +31,7 @@
                         <b-col v-if="blogPost.next" class="text-right">
                             <nuxt-link class="text-muted" :to="`/writings/${blogPost.next.slug}`" rel="next">
                                 <small class="post-nav-label">
-                                    Next <font-awesome-icon :icon="['fa', 'angle-double-right']" />
+                                    Next <font-awesome-icon style="margin-bottom: 0.03rem;" :icon="['fa', 'angle-double-right']" />
                                 </small>
                                 <span class="post-nav-title">{{ blogPost.next.title }}</span>
                             </nuxt-link>
