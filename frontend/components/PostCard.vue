@@ -5,14 +5,14 @@
         class="overflow-hidden shadow-sm mb-4">
         <b-row no-gutters>
             <b-col lg="6">
-                <nuxt-link :to="`/writings/${slug}`">
+                <nuxt-link class="post-link" :to="`/writings/${slug}`">
                     <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
                 </nuxt-link>
             </b-col>
             <b-col lg="6" class="d-flex flex-column">
                 <b-card-body class="flex-shrink-0">
                     <b-card-title>
-                        <nuxt-link :title="title" class="text-decoration-none" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
+                        <nuxt-link :title="title" class="post-link" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
                     </b-card-title>
                     <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
                     <div class="position-relative">
@@ -36,7 +36,7 @@
         class="overflow-hidden w-100 shadow-sm mb-4">
 
         
-        <nuxt-link :to="`/writings/${slug}`">
+        <nuxt-link class="post-link" :to="`/writings/${slug}`">
             <div class="aspect-ratio-box">
                 <div class="aspect-ratio-box-inner">
                     <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 d-block w-100" fluid></b-card-img-lazy>
@@ -47,7 +47,7 @@
 
         <b-card-body>
             <b-card-title>
-                <nuxt-link :title="title" class="text-decoration-none" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
+                <nuxt-link :title="title" class="post-link" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
             </b-card-title>
             <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
             <div class="position-relative">
@@ -117,7 +117,11 @@ export default {
     transition: opacity 0.2s ease-in-out;
 }
 
-.card-img:hover {
+.post-link {
+    text-decoration: none !important;
+}
+
+.post-link:hover .card-img {
     opacity: 0.75;
 }
 
