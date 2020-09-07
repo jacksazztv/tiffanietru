@@ -1,4 +1,4 @@
-query BlogPosts($slug: String!) {
+query BlogPost($slug: String!) {
     blogPostBySlug(slug: $slug) {
         id
         created_at
@@ -15,5 +15,13 @@ query BlogPosts($slug: String!) {
             name
         }
         slug
+        previous {
+            title
+            slug
+        }
+        next {
+            title
+            slug
+        }
     }
 }
