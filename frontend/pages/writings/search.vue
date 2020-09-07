@@ -27,6 +27,7 @@
                     </PostCard>
                     <b-pagination-nav
                         v-if="numPages > 1"
+                        align="center"
                         :link-gen="linkGen"
                         :number-of-pages="numPages">
                     </b-pagination-nav>
