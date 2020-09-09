@@ -10,9 +10,9 @@
   },
   "attributes": {
     "user": {
+      "via": "purchases",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "purchases"
+      "model": "user"
     }
   }
 }

@@ -37,7 +37,9 @@
 
                 </b-form-group>
 
-                <b-button type="submit" variant="primary" class="w-100 text-white">Sign in</b-button>
+                <b-button type="submit" variant="primary" class="mb-2 w-100 text-white">Sign in</b-button>
+                <p class="mb-2 text-muted text-center">Or</p>
+                <b-button href="http://localhost:1337/connect/twitch" class="twitch-btn"><font-awesome-icon :icon="['fab', 'twitch']" /> Connect with Twitch</b-button>
             </b-form>
         </b-card>
         <b-card no-body class="p-2 shadow-sm text-muted text-center">
@@ -118,5 +120,17 @@ export default {
 
     .auth-form label {
         font-weight: bold !important;
+    }
+
+    .twitch-btn {
+        background-color: #9146FF;
+        border-color: #9146FF;
+        width: 100%;
+        color: #fff;
+    }
+
+    .twitch-btn:hover, .twitch-btn:focus {
+        background-color: #7313ff;
+        border-color: #7313ff;
     }
 </style>

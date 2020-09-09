@@ -54,12 +54,15 @@
       "configurable": false
     },
     "purchases": {
-      "via": "user",
-      "collection": "purchase"
+      "collection": "purchase",
+      "via": "user"
     },
     "orders": {
-      "via": "user",
-      "collection": "order"
+      "collection": "order",
+      "via": "user"
+    },
+    "twitchAccount": {
+      "type": "json"
     }
   }
 }
