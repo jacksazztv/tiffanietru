@@ -39,7 +39,7 @@
 
                 <b-button type="submit" variant="primary" class="mb-2 w-100 text-white">Sign in</b-button>
                 <p class="mb-2 text-muted text-center">Or</p>
-                <b-button href="http://localhost:1337/connect/twitch" class="twitch-btn"><font-awesome-icon :icon="['fab', 'twitch']" /> Connect with Twitch</b-button>
+                <b-button :href="`${apiUrl}/connect/twitch`" class="twitch-btn"><font-awesome-icon :icon="['fab', 'twitch']" /> Connect with Twitch</b-button>
             </b-form>
         </b-card>
         <b-card no-body class="p-2 shadow-sm text-muted text-center">
@@ -68,6 +68,7 @@ export default {
     },
     data() {
         return {
+            apiUrl: process.env.strapiBaseUri,
             seo: {},
             showDismissibleAlert: false,
             form: {
