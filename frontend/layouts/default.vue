@@ -58,7 +58,7 @@ export default {
         {
           hid: 'og-image',
           property: 'og:image',
-          content: this.api_url + this.seo.image.url
+          content: this.seo.image ? (this.api_url + this.seo.image.url) : this.api_url
         },
         {
           hid: 'og-url',

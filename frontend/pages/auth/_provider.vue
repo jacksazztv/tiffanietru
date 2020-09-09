@@ -37,6 +37,7 @@ export default {
     },
     components: {
         LoadingComponent
-    }
+    },
+    layout: 'simple'
 }
 </script>
