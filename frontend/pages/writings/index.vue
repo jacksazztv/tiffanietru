@@ -113,13 +113,13 @@ export default {
     },
     computed: {
         featuredPosts() {
-            if (this.page === 1 && this.blogPosts.length >= 3) {
+            if (this.page === 1 && this.blogPosts.length > 3) {
                 return this.blogPosts.slice(0, 3);
             }
             return [];
         },
         otherPosts() {
-            if (this.page === 1 && this.blogPosts.length >= 3) {
+            if (this.page === 1 && this.blogPosts.length > 3) {
                 return this.blogPosts.slice(3);
             }
             return this.blogPosts;
