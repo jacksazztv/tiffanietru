@@ -10,8 +10,7 @@
                 </header>
                 <b-row>
                     <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
-                        <PostCardSkeleton class="flex-grow-1">
-                        </PostCardSkeleton>
+                        <PostCardSkeleton class="flex-grow-1"></PostCardSkeleton>
                     </b-col>
                 </b-row>
             </section>
@@ -19,10 +18,7 @@
         <b-container class="my-5">
             <b-row>
                 <b-col sm="8">
-                    <section>
-                        <h2>Recent Posts</h2>
-                        <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
-                    </section>
+                    <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
                 </b-col>
                 <b-col sm="4">
                     <PostCardSkeleton></PostCardSkeleton>
@@ -57,10 +53,15 @@
             </section>
         </b-jumbotron>
         <b-container class="my-5">
+            <header v-if="!featuredPosts.length" class="text-center mb-5">
+                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
+                    {{ title }}
+                    <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
+                </h1>
+            </header>
             <b-row>
                 <b-col sm="8">
                     <section>
-                        <h2>Recent Posts</h2>
                         <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
                             :img-src="api_url + blogPost.image.url"
                             :img-width="blogPost.image.width"
@@ -112,10 +113,16 @@ export default {
     },
     computed: {
         featuredPosts() {
-            return this.page === 1 ? this.blogPosts.slice(0, 3) : [];
+            if (this.page === 1 && this.blogPosts.length >= 3) {
+                return this.blogPosts.slice(0, 3);
+            }
+            return [];
         },
         otherPosts() {
-            return this.page === 1 ? this.blogPosts.slice(3) : this.blogPosts;
+            if (this.page === 1 && this.blogPosts.length >= 3) {
+                return this.blogPosts.slice(3);
+            }
+            return this.blogPosts;
         },
     },
     methods: {
