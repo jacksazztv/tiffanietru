@@ -1,0 +1,17 @@
+query ShopItem($slug: String!) {
+  shopItemBySlug(slug: $slug) {
+    id
+    created_at
+    updated_at
+    name
+    description
+    image {
+      url
+      width
+      height
+    }
+    price
+    type
+    slug
+  }
+}
