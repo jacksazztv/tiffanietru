@@ -26,7 +26,7 @@ export default {
             .then(data => {
                 if (data.jwt && data.user) {
                     this.$apolloHelpers.onLogin(data.jwt);
-                    this.setUser(data.user)
+                    this.setUser(data.user);
                     this.$router.replace('/');
                 }
             })

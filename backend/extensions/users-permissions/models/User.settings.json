@@ -53,10 +53,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "purchases": {
-      "collection": "purchase",
-      "via": "user"
-    },
     "orders": {
       "collection": "order",
       "via": "user"
