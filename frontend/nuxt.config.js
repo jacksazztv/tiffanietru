@@ -19,6 +19,13 @@ export default {
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap' }
     ],
+    script: [
+      {
+        hid: 'paypal',
+        src: 'https://www.paypal.com/sdk/js?client-id=sb&currency=USD',
+        async: true
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color

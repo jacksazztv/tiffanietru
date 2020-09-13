@@ -1,0 +1,15 @@
+query ShopItems {
+  shopItems {
+    id
+    created_at
+    updated_at
+    name
+    excerpt
+    price
+    image {
+      url
+    }
+    type
+    slug
+  }
+}

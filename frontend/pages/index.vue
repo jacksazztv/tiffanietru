@@ -24,8 +24,8 @@
       <b-container>
         <section>
           <h2 class="sub-heading mb-4">Latest Writings</h2>
-          <b-row>
-            <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" md>
+          <b-row class="justify-content-center">
+            <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" md="3">
               <PostCard
                 :img-src="api_url + blogPost.image.url"
                 :img-width="blogPost.image.width"

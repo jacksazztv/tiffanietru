@@ -1,8 +1,19 @@
 'use strict';
 
-/**
- * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
- * to customize this model
- */
+const md = require('markdown-it')();
+const excerptHtml = require('excerpt-html');
 
-module.exports = {};
+module.exports = {
+    lifecycles: {
+        async beforeCreate(data) {
+            if (data.description) {
+                data.excerpt = excerptHtml(md.render(data.description));
+            }
+        },
+        async beforeUpdate(params, data) {
+            if (data.description) {
+                data.excerpt = excerptHtml(md.render(data.description));
+            }
+        }
+    }
+};

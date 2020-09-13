@@ -7,7 +7,10 @@
             </b-col>
             <b-col sm="7">
                 <h1 class="mb-0">{{ title }}</h1>
-                <p class="text-muted mb-4">{{ price }}</p>
+                <p class="text-muted mb-4">
+                    <span :class="{ 'discount-price': twitchDiscount }">{{ displayPrice }}</span>
+                    <span v-if="twitchDiscount" class="text-success">{{ displayDiscountPrice }}</span>
+                </p>
                 <div class="mb-4" v-html="$md.render(description)"></div>
                 <PaypalButtons></PaypalButtons>
             </b-col>
@@ -45,6 +48,14 @@ export default {
             ],
         }
     },
+    computed: {
+        displayPrice() {
+            return '$' + (this.price / 100).toFixed(2);
+        },
+        displayDiscountPrice() {
+            return '$' + ((this.price - Math.floor(this.price * 0.10)) / 100).toFixed(2);
+        }
+    },
     data() {
         return {
             title: '',
@@ -52,7 +63,8 @@ export default {
             productImage: {},
             price: '',
             apiUrl: process.env.strapiBaseUri,
-            seo: {}
+            seo: {},
+            twitchDiscount: true
         };
     },
     apollo: {
@@ -69,7 +81,7 @@ export default {
                     this.title = result.data.shopItemBySlug.name;
                     this.description = result.data.shopItemBySlug.description;
                     this.productImage = result.data.shopItemBySlug.image;
-                    this.price = '$' + result.data.shopItemBySlug.price / 100;
+                    this.price = result.data.shopItemBySlug.price;
                 }
             }
         },
@@ -84,3 +96,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.discount-price {
+    text-decoration: line-through;
+}
+</style>

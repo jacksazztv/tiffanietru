@@ -47,6 +47,9 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "excerpt": {
+      "type": "string"
     }
   }
 }
