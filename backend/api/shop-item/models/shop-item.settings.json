@@ -50,6 +50,16 @@
     },
     "excerpt": {
       "type": "string"
+    },
+    "subDiscount": {
+      "type": "integer",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "required": true
+    },
+    "giveDiscount": {
+      "type": "boolean"
     }
   }
 }

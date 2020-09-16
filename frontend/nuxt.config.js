@@ -125,7 +125,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight'],
+      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight', 'faShoppingCart'],
       brands: ['faYoutube', 'faPatreon', 'faTwitter', 'faTwitch', 'faDiscord', 'faInstagram', 'faAmazon']
     }
   },

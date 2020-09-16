@@ -9,7 +9,7 @@
                 </h1>
             </header>
 
-            <div v-html="$md.render(content)" class="text-center mb-5"></div>
+            <div v-html="$md.render(content)" class="lead content mb-5"></div>
 
             <TestimonialsSlider></TestimonialsSlider>
         </section>
@@ -67,3 +67,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+</style>

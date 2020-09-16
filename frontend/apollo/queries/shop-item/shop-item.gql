@@ -11,6 +11,8 @@ query ShopItem($slug: String!) {
       height
     }
     price
+    subDiscount
+    giveDiscount
     type
     slug
   }

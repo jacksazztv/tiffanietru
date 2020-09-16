@@ -10,11 +10,11 @@
   },
   "attributes": {
     "user": {
-      "via": "orders",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "orders"
     },
-    "description": {
+    "details": {
       "type": "text"
     },
     "price": {
@@ -28,6 +28,9 @@
         "TarotReading"
       ],
       "default": "Digital"
+    },
+    "shop_items": {
+      "collection": "shop-item"
     },
     "portfolios": {
       "collection": "portfolio"

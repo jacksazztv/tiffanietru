@@ -6,6 +6,8 @@ query ShopItems {
     name
     excerpt
     price
+    subDiscount
+    giveDiscount
     image {
       url
     }

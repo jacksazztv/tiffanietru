@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/twitch-subs",
+      "handler": "twitch-subs.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/twitch-subs",
+      "handler": "twitch-subs.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/twitch-subs",
+      "handler": "twitch-subs.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "twitch_subs",
+  "info": {
+    "name": "Twitch Subs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

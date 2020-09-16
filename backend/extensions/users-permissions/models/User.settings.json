@@ -54,8 +54,8 @@
       "configurable": false
     },
     "orders": {
-      "collection": "order",
-      "via": "user"
+      "via": "user",
+      "collection": "order"
     },
     "twitchAccount": {
       "type": "json"
