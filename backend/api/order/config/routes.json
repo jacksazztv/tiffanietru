@@ -41,6 +41,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/orders/capture-paypal-order",
+      "handler": "order.capturePaypalOrder",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/orders/:id",
       "handler": "order.update",
