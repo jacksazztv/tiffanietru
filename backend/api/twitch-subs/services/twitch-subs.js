@@ -10,7 +10,11 @@ module.exports = {
      * 
      * @return {Boolean}
      */
-    async isTwitchSub(user) {
+    async isSubscribed(user) {
+        if (!user) {
+            return false;
+        }
+        
         const { twitchAccount } = user;
 
         if (!twitchAccount) {

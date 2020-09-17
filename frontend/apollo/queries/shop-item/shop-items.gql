@@ -7,7 +7,6 @@ query ShopItems {
     excerpt
     price
     subDiscount
-    giveDiscount
     image {
       url
     }

@@ -1,8 +1,9 @@
 'use strict';
 
-/**
- * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
- * to customize this controller
- */
-
-module.exports = {};
+module.exports = {
+    async findTwitchUser(ctx) {
+        const subscribed = await strapi.services['twitch-subs'].isSubscribed(ctx.state.user);
+        
+        return { subscribed: subscribed };
+    }
+};

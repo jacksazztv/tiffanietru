@@ -12,7 +12,6 @@ query ShopItem($slug: String!) {
     }
     price
     subDiscount
-    giveDiscount
     type
     slug
   }
