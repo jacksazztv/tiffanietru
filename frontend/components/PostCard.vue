@@ -125,12 +125,6 @@ export default {
     opacity: 0.75;
 }
 
-.card-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .card-text {
     margin-bottom: 0 !important;
 }

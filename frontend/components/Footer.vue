@@ -4,7 +4,7 @@
       <b-container>
         <b-row>
           <b-col sm>
-            <h5>Site Map</h5>
+            <h5>Navigation</h5>
             <ul>
               <li><nuxt-link to="/">Home</nuxt-link></li>
               <li><nuxt-link to="/about">About</nuxt-link></li>

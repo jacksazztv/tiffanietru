@@ -2,8 +2,6 @@
 
 const axios = require('axios');
 
-let twitchSubs;
-
 module.exports = {
     /**
      * Returns if the connected twitch account is subscribed or not
@@ -21,12 +19,9 @@ module.exports = {
             return false;
         }
 
-        if (!twitchSubs) {
-            const entity = await strapi.services['twitch-subs'].find();
-            twitchSubs = entity.data;
-        }
+        const twitchSubs = await strapi.services['twitch-subs'].find();
 
-        return twitchSubs.some(sub => sub.user_id === twitchAccount.id);
+        return twitchSubs.data.some(sub => sub.user_id === twitchAccount.id);
     },
 
     /**
@@ -39,9 +34,8 @@ module.exports = {
         // Old subgoal coming in handy
         const subpoints = await axios.get('https://subgoal.glitch.me/api/subpoints');
 
-        if (subpoints.data) {
-            twitchSubs = subpoints.data.subbers;
-            return await strapi.services['twitch-subs'].createOrUpdate({ data: twitchSubs });
+        if (subpoints.subbers) {
+            return await strapi.services['twitch-subs'].createOrUpdate({ data: subpoints.subbers });
         }
     }
 };
