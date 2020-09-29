@@ -139,6 +139,7 @@ export default {
             api_url: process.env.strapiBaseUri,
             page: parseInt(this.$route.query.page) || 1,
             pageSize: 25,
+            seo: {}
         }
     },
     apollo: {
