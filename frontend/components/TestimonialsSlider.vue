@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import anime from 'animejs/lib/anime.es.js';
+import anime from 'animejs';
 
 export default {
     data() {
