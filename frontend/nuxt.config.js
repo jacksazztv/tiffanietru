@@ -2,7 +2,6 @@ export default {
   env: {
 	  strapiBaseUri: process.env.NODE_ENV === 'dev' ? "http://localhost:1337" : 'https://tiffanietru.com/api'
   },
-  mode: "universal",
   /*
    ** Headers of the page
    */
@@ -118,7 +117,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight', 'faShoppingCart'],
+      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight', 'faShoppingCart', 'faTrashAlt', 'faPlus', 'faMinus'],
       brands: ['faYoutube', 'faPatreon', 'faTwitter', 'faTwitch', 'faDiscord', 'faInstagram', 'faAmazon']
     }
   },
