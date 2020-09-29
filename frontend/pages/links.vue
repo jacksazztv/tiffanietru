@@ -116,7 +116,6 @@ export default {
         border-radius: 40px;
         transition: opacity 0.2s ease-in-out;
         max-width: 690px !important;
-        box-shadow: none !important;
     }
 
     .btn:hover {

@@ -1,6 +1,4 @@
 $dark: #191919;
-$primary: #fda5c8;
-// Dribble
 $primary: #ea4c89;
 $secondary: #252525;
 $purple: #9146FF;
@@ -15,6 +13,9 @@ $btn-font-family: 'Oswald', sans-serif;
 $headings-color: $primary;
 
 $jumbotron-padding: 1.5rem;
+
+$btn-focus-box-shadow: none !important;
+$btn-active-box-shadow: none !important;
 
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
