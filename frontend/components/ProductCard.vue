@@ -1,49 +1,122 @@
 <template>
-    <nuxt-link class="card-link" :to="`/products/${product.slug}`">
-        <b-card
-            tag="article"
-            class="shadow"
-            :img-src="apiUrl + product.image.url"
-            :img-width="product.image.width"
-            :img-height="product.image.height"
-            :img-alt="product.name"
-            :title="product.name"
-            :sub-title="'$' + product.price / 100"
-            img-top>
+    <b-card
+        no-body
+        tag="article"
+        sub-title-tag="p"
+        class="overflow-hidden text-center w-100 shadow-sm mb-4">
 
-            <b-card-text>
-                {{ product.excerpt }}
-            </b-card-text>
+        <nuxt-link class="product-link" :to="`/products/${product.slug}`">
+            <div class="aspect-ratio-box">
+                <div class="aspect-ratio-box-inner">
+                    <b-card-img-lazy 
+                        class="d-block rounded-0 w-100"
+                        :src="apiUrl + product.image.url"
+                        :width="product.image.width" 
+                        :height="product.image.height" 
+                        :alt="product.name">
+                    </b-card-img-lazy>
+                </div>
+            </div>
+        </nuxt-link>
 
-        </b-card>
-    </nuxt-link>
+        <b-card-body>
+            <b-card-title>
+                <nuxt-link class="product-link" :to="`/products/${product.slug}`">
+                    {{ product.name }}
+                </nuxt-link>
+            </b-card-title>
+            <b-card-sub-title sub-title-tag="p" class="mb-2">
+                <span :class="{ 'discount-price': showDiscount }">{{ displayPrice }}</span>
+                <span v-if="showDiscount" class="text-success">{{ displayDiscountPrice }}</span>
+            </b-card-sub-title>
+            
+            <b-button v-if="!itemInCart" @click="addToCart(product)" variant="primary" class="text-uppercase">Add to Cart</b-button>
+            <b-button v-else @click="removeAll(product)" variant="danger" class="text-uppercase">Remove from Cart</b-button>
+
+        </b-card-body>
+    </b-card>
 </template>
 
 <script>
+import twitchUserQuery from '~/apollo/queries/twitch-user/twitch-user.gql';
+import { mapMutations } from 'vuex';
+
 export default {
+    computed: {
+        showDiscount() {
+            return this.twitchUser.subscribed && this.product.subDiscount > 0;
+        },
+        displayPrice() {
+            return '$' + (this.product.price / 100).toFixed(2);
+        },
+        displayDiscountPrice() {
+            const discount = Math.floor(this.product.price * (this.product.subDiscount / 100));
+            return '$' + ((this.product.price - discount) / 100).toFixed(2);
+        },
+        cartItems() {
+            return this.$store.getters['cart/items'];
+        },
+        itemInCart() {
+            return this.cartItems.some(item => item.id === this.product.id);
+        }
+    },
     data() {
         return {
-            apiUrl: process.env.strapiBaseUri
+            apiUrl: process.env.strapiBaseUri,
+            twitchUser: {}
         };
+    },
+    methods : {
+        ...mapMutations({
+            addToCart: 'cart/add',
+            removeFromCart: 'cart/remove',
+            removeAll: 'cart/removeAll'
+        })
     },
     props: {
         product: Object
+    },
+    apollo: {
+        twitchUser: {
+            prefetch: true,
+            query: twitchUserQuery
+        }
     }
 }
 </script>
 
 <style scoped>
-.card-link {
-    text-decoration: none !important;
-    color: inherit;
+.discount-price {
+    text-decoration: line-through;
 }
 
-.card {
-    transition: box-shadow 0.5s ease-in-out;
-    box-shadow: none !important;
+.aspect-ratio-box {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 */
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
-.card-link:hover .card {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+.aspect-ratio-box-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.card-img {
+    object-fit: contain;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.product-link {
+    text-decoration: none;
+}
+
+.product-link:hover .card-img {
+    opacity: 0.75;
 }
 </style>

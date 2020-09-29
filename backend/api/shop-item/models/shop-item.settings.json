@@ -57,6 +57,11 @@
       "max": 100,
       "default": 0,
       "required": true
+    },
+    "customFields": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.custom-field"
     }
   }
 }

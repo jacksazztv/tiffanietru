@@ -1,8 +1,8 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
     <div v-else>
-        <b-container class="py-5 text-center">
-            <section>
+        <section>
+            <b-container class="py-5">
                 <header class="mb-5">
                     <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                         {{ title }}
@@ -10,19 +10,16 @@
                     </h1>
                 </header>
                 
-                <div v-html="$md.render(content)"></div>
-
-            </section>
-        </b-container>
-        <div class="py-5 bg-light">
-            <b-container>
+                <div class="lead content" v-html="$md.render(content)"></div>
+            </b-container>
+            <b-container class="py-5 bg-light" fluid>
                 <b-row class="justify-content-center">
-                    <b-col sm="3" v-for="product in shopItems" :key="product.id">
+                    <b-col sm="3" class="d-flex align-items-stretch" v-for="product in shopItems" :key="product.id">
                         <ProductCard :product="product"></ProductCard>
                     </b-col>
                 </b-row>
             </b-container>
-        </div>
+        </section>
     </div>
 </template>
 
@@ -69,7 +66,7 @@ export default {
         },
         shopItems: {
             prefetch: true,
-            query: shopItemsQuery
+            query: shopItemsQuery,
         },
         seo: {
             prefetch: true,
@@ -82,3 +79,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+</style>

@@ -1,5 +1,5 @@
-query ShopItems {
-  shopItems {
+query CartItems($ids: [Int]!) {
+  cartItems(ids: $ids) {
     id
     created_at
     updated_at

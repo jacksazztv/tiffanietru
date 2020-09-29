@@ -14,26 +14,20 @@
       "model": "user",
       "via": "orders"
     },
-    "details": {
-      "type": "text"
-    },
-    "price": {
-      "type": "biginteger"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Digital",
-        "Physical",
-        "TarotReading"
-      ],
-      "default": "Digital"
-    },
     "shop_items": {
       "collection": "shop-item"
     },
-    "portfolios": {
-      "collection": "portfolio"
+    "captureId": {
+      "type": "string"
+    },
+    "amountPaid": {
+      "type": "string"
+    },
+    "currencyCode": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }

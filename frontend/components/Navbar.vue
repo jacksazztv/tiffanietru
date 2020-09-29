@@ -47,6 +47,9 @@
             Logout
           </b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item to="/cart">
+          <font-awesome-icon :icon="['fa', 'shopping-cart']" /> <span class="sr-only">Cart</span> {{ numberOfItems }}
+        </b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav v-else>
         <b-nav-item to="/login" active>
@@ -54,6 +57,9 @@
         </b-nav-item>
         <b-nav-item  class="bg-primary rounded" link-classes="text-white" to="/register" active>
           Sign up
+        </b-nav-item>
+        <b-nav-item to="/cart">
+          <font-awesome-icon :icon="['fa', 'shopping-cart']" /> <span class="sr-only">Cart</span> {{ numberOfItems }}
         </b-nav-item>
       </b-navbar-nav>
     </b-collapse>
@@ -68,6 +74,9 @@ export default {
   computed: {
     username() {
       return this.$store.getters['auth/username'];
+    },
+    numberOfItems() {
+      return this.$store.getters['cart/numberOfItems'];
     },
     tarotMenuActive() {
       return ['/what-is-tarot', '/horoscopes', '/commissions', '/testimonials'].includes(this.$nuxt.$route.path);

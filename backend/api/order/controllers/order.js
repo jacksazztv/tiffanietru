@@ -17,9 +17,9 @@ module.exports = {
      * @return {Object}
      */
     async createPaypalTransaction(ctx) {     
-        const { items } = ctx.request.body;
+        let { items } = ctx.request.body;
 
-        if (!items) {
+        if (!items || !items.length) {
             return ctx.badRequest('No items provided');
         }
 
@@ -41,31 +41,43 @@ module.exports = {
         // Check if user is a twitch sub
         const subscribed = await strapi.services['twitch-subs'].isSubscribed(ctx.state.user);
 
+        const oldItems = items.slice();
+
         // Fetch the real items from the database
-        const itemIds = items.map(item => item.id);
-        const shopItems = await strapi.services['shop-item'].find({ id_in: itemIds });
+        items = await strapi.services['shop-item'].find({ id_in: items.map(item => item.id) });
+
+        items = items.map(item => {
+            const oldItem = oldItems.find(i => i.id == item.id);
+
+            return {
+                quantity: oldItem.quantity,
+                ...item
+            };
+        });
+
+        console.log(items);
 
         // Full total of items not including discounts
-        const itemTotal = shopItems.reduce((accumulator, item) => {
-            return accumulator + parseInt(item.price);
+        const itemTotal = items.reduce((accumulator, item) => {
+            return accumulator + +item.price * item.quantity;
         }, 0);
 
         // Total discount for the order
-        const discountTotal = shopItems.reduce((accumulator, item) => {
+        const discountTotal = items.reduce((accumulator, item) => {
             if (subscribed) {
-                return accumulator + Math.floor(parseInt(item.price) * (item.subDiscount / 100));
+                return accumulator + Math.floor(+item.price * (+item.subDiscount / 100));
             }
             return accumulator;
         }, 0);
 
-        const itemData = shopItems.map(item => {
+        const itemData = items.map(item => {
             return {
                 name: item.name,
                 unit_amount: {
                     currency_code: 'USD',
-                    value: (parseInt(item.price) / 100).toFixed(2)
+                    value: (+item.price / 100).toFixed(2)
                 },
-                quantity: 1
+                quantity: item.quantity
             };
         });
 
@@ -114,6 +126,15 @@ module.exports = {
             return ctx.badRequest('No order ID provided');
         }
 
+        let { items } = ctx.request.body;
+
+        if (!items || !items.length) {
+            return ctx.badRequest('No items provided');
+        }
+        
+        // Fetch the real items from the database
+        items = await strapi.services['shop-item'].find({ id_in: items.map(item => item.id) });
+
         // Get an access token from the paypal api
         const auth = await axios({
             url: PAYPAL_OAUTH_API,
@@ -139,11 +160,27 @@ module.exports = {
             }
         });
 
-        /*if (!capture.data.error) {
-            const captureID = capture.data.purchase_units[0].payments.captures[0].id;
-        }*/
+        if (capture.data.error) {
+            return ctx.badRequest(null, capture.data.error);
+        }
 
-        return capture.data;
+        const payer = capture.data.payer;
+        const payment = capture.data.purchase_units[0].payments.captures[0];
+
+        if (!['COMPLETED', 'PENDING'].includes(payment.status)) {
+            return ctx.badRequest(null, payment.status_details);
+        }
+
+        const orderDetails = await strapi.services['order'].create({
+            email: payer.email_address,
+            captureId: payment.id,
+            amountPaid: payment.amount.value,
+            currencyCode: payment.amount.currency_code,
+            shop_items: items.map(item => item.id),
+            user: ctx.state.user ? ctx.state.user.id : null
+        });
+
+        return sanitizeEntity(orderDetails, { model: strapi.models.order });
     },
     /**
      * Retrieve user's orders

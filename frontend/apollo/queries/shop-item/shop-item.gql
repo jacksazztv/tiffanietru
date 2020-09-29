@@ -14,5 +14,12 @@ query ShopItem($slug: String!) {
     subDiscount
     type
     slug
+    customFields {
+      id
+      title
+      required
+      type
+      placeholder
+    }
   }
 }

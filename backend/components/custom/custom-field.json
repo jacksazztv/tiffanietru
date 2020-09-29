@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_custom_custom_fields",
+  "info": {
+    "name": "customField",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "required": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "textmultiline",
+        "email"
+      ],
+      "required": true,
+      "default": "text"
+    },
+    "placeholder": {
+      "type": "string"
+    }
+  }
+}
