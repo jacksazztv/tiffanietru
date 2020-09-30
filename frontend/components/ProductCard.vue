@@ -26,8 +26,8 @@
                 </nuxt-link>
             </b-card-title>
             <b-card-sub-title sub-title-tag="p" class="mb-2">
-                <span :class="{ 'discount-price': showDiscount }">{{ displayPrice }}</span>
-                <span v-if="showDiscount" class="text-success">{{ displayDiscountPrice }}</span>
+                <span :class="{ 'discount-price': showDiscount }">{{ normalPrice }}</span>
+                <span v-if="showDiscount" class="text-success">{{ discountPrice }}</span>
             </b-card-sub-title>
             
             <b-button v-if="!itemInCart" @click="addToCart(product)" variant="primary" class="text-uppercase">Add to Cart</b-button>
@@ -46,12 +46,22 @@ export default {
         showDiscount() {
             return this.twitchUser.subscribed && this.product.subDiscount > 0;
         },
-        displayPrice() {
-            return '$' + (this.product.price / 100).toFixed(2);
+        normalPrice() {
+            const nf = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            });
+
+            return nf.format(this.product.price / 100)
         },
-        displayDiscountPrice() {
+        discountPrice() {
+            const nf = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            });
+
             const discount = Math.floor(this.product.price * (this.product.subDiscount / 100));
-            return '$' + ((this.product.price - discount) / 100).toFixed(2);
+            return nf.format((this.product.price - discount) / 100);
         },
         cartItems() {
             return this.$store.getters['cart/items'];

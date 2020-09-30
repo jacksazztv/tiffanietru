@@ -32,68 +32,62 @@
                                 </b-button>
                             </div>
 
-                            <b-card-text class="text-muted mb-0">
+                            <b-card-text class="text-muted">
                                 {{ product.excerpt }}
                             </b-card-text>
 
-                            <b-row>
-                                <b-col md="8" class="mb-3 mb-md-0">
-                                    <ul class="list-unstyled mb-0">
-                                        <li v-for="field in product.customFields" :key="field.id" class="mt-3">
-                                            <div v-if="field.type === 'textmultiline'">
-                                                <label :for="`data${field.id}`" class="text-muted">{{ field.title }} <span v-if="field.required" class="text-danger">*</span></label>
-                                                <b-form-textarea :id="`data${field.id}`" 
-                                                    :required="field.required" 
-                                                    :placeholder="field.placeholder"
-                                                    v-model="form[`data${field.id}`]">
-                                                </b-form-textarea>
-                                            </div>
-                                            <div v-else>
-                                                <label :for="`data${field.id}`" class="text-muted">{{ field.title }} <span v-if="field.required" class="text-danger">*</span></label>
-                                                <b-form-input :id="`data${field.id}`" 
-                                                    :type="field.type" 
-                                                    :placeholder="field.placeholder" 
-                                                    :required="field.required"
-                                                    v-model="form[`data${field.id}`]">
-                                                </b-form-input>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </b-col>
-                                <b-col md="4">
-                                    <div class="d-flex align-items-end justify-content-between h-100">
-
-                                        <div class="quantity-buttons">
-                                            <span class="text-muted">Quantity</span>
-                                            <div class="d-flex align-items-center justify-content-between border rounded">
-                                                <b-button @click="removeFromCart(product)" variant="transparent" class="text-muted">
-                                                    <font-awesome-icon :icon="['fa', 'minus']" />
-                                                </b-button>
-
-                                                <span>{{ product.quantity }}</span>
-
-                                                <b-button @click="addToCart(product)" variant="transparent" class="text-muted">
-                                                    <font-awesome-icon :icon="['fa', 'plus']" />
-                                                </b-button>
-                                            </div>
-                                        </div>
-
-                                        <div class="ml-3">
-                                            <div>
-                                                <span :class="{'discount-price': twitchUser.subscribed && product.subDiscount > 0}">
-                                                    {{ '$' + ((product.quantity * product.price) / 100).toFixed(2) }}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span v-if="twitchUser.subscribed && product.subDiscount > 0" class="text-success">
-                                                    {{ calculatePrice(product) }}
-                                                </span>
-                                            </div>
-                                        </div>
-
+                            <ul class="list-unstyled mb-0">
+                                <li v-for="field in product.customFields" :key="field.id" class="mb-3">
+                                    <div v-if="field.type === 'textmultiline'">
+                                        <label :for="`data${field.id}`" class="text-muted">{{ field.title }} <span v-if="field.required" class="text-danger">*</span></label>
+                                        <b-form-textarea :id="`data${field.id}`" 
+                                            :required="field.required" 
+                                            :placeholder="field.placeholder"
+                                            v-model="form[`data${field.id}`]">
+                                        </b-form-textarea>
                                     </div>
-                                </b-col>
-                            </b-row>
+                                    <div v-else>
+                                        <label :for="`data${field.id}`" class="text-muted">{{ field.title }} <span v-if="field.required" class="text-danger">*</span></label>
+                                        <b-form-input :id="`data${field.id}`" 
+                                            :type="field.type" 
+                                            :placeholder="field.placeholder" 
+                                            :required="field.required"
+                                            v-model="form[`data${field.id}`]">
+                                        </b-form-input>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex align-items-end justify-content-between">
+
+                                <div class="quantity-buttons">
+                                    <span class="text-muted">Quantity</span>
+                                    <div class="d-flex align-items-center justify-content-between border rounded">
+                                        <b-button @click="removeFromCart(product)" variant="transparent" class="text-muted">
+                                            <font-awesome-icon :icon="['fa', 'minus']" />
+                                        </b-button>
+
+                                        <span>{{ product.quantity }}</span>
+
+                                        <b-button @click="addToCart(product)" variant="transparent" class="text-muted">
+                                            <font-awesome-icon :icon="['fa', 'plus']" />
+                                        </b-button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>
+                                        <span :class="{'discount-price': twitchUser.subscribed && product.subDiscount > 0}">
+                                            {{ formatMoney((product.quantity * product.price) / 100) }}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span v-if="twitchUser.subscribed && product.subDiscount > 0" class="text-success">
+                                            {{ formatMoney(calculatePrice(product)) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </b-card>
@@ -157,22 +151,31 @@ export default {
             });
         },
         totalCost() {
-            return '$' + (this.cartItemsWithQuantity.reduce((accumulator, item) => {
+            const amount = this.cartItemsWithQuantity.reduce((accumulator, item) => {
                 let discount = 0;
                 if (this.twitchUser.subscribed && item.subDiscount > 0) {
                     discount = Math.floor(item.price * (item.subDiscount / 100));
                 }
                 return item.quantity * item.price - discount + accumulator;
-            }, 0) / 100).toFixed(2);
+            }, 0);
+            return this.formatMoney(amount / 100);
         }
     },
     methods: {
+        formatMoney(amount) {
+            const nf = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            });
+
+            return nf.format(amount);
+        },
         calculatePrice(product) {
             let discount = 0;
             if (this.twitchUser.subscribed && product.subDiscount > 0) {
                 discount = Math.floor(product.price * (product.subDiscount / 100));
             }
-            return '$' + ((product.quantity * product.price - discount) / 100).toFixed(2);
+            return ((product.quantity * product.price - discount) / 100);
         },
         onSubmit() {
             this.showPaypalBtn = true;

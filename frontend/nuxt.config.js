@@ -136,6 +136,9 @@ export default {
       //const vueLoader = config.module.rules.find(rule => rule.loader === 'vue-loader')
       //vueLoader.options.transformAssetUrls.AnimatedImage = 'src';
     },
+    babel: {
+      compact: true
+    }
   },
   module: {
     rules: [
