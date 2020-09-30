@@ -2,7 +2,7 @@ module.exports = {
     query: `
         blogSearch(q: String, sort: String, start: Int, limit: Int): [BlogPost]!
         blogSearchCount(q: String): Int!
-        blogPostBySlug(slug: String!): BlogPost!
+        blogPostBySlug(slug: String!): BlogPost
     `,
     resolver: {
         Query: {

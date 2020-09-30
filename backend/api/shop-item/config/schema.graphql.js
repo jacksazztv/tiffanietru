@@ -1,6 +1,6 @@
 module.exports = {
     query: `
-        shopItemBySlug(slug: String!): ShopItem!
+        shopItemBySlug(slug: String!): ShopItem
         cartItems(ids: [Int]!): [ShopItem]!
     `,
     resolver: {
