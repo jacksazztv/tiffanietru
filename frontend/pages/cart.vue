@@ -106,7 +106,7 @@
                     </b-col>
                 </b-row>
             </b-form>
-            <p v-else class="text-muted text-center">
+            <p v-else class="no-items-text text-muted text-center">
                 No items in cart!
             </p>
         </b-container>
@@ -240,4 +240,8 @@ export default {
     text-transform: uppercase;
     padding: 0.5rem;
 }
+
+.no-items-text {
+    font-size: 2rem;
+} 
 </style>
