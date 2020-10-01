@@ -2,9 +2,9 @@
 
 module.exports = {
   /**
-   * Update sub data every day at midnight
+   * Update sub data every hour
    */
-  '0 0 * * *': () => {
+  '0 * * * *': () => {
     console.log('Updating twitch subs...');
     strapi.services['twitch-subs'].fetchSubData();
   }

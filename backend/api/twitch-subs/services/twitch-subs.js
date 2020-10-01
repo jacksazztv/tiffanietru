@@ -34,8 +34,8 @@ module.exports = {
         // Old subgoal coming in handy
         const subpoints = await axios.get('https://subgoal.glitch.me/api/subpoints');
 
-        if (subpoints.subbers) {
-            return await strapi.services['twitch-subs'].createOrUpdate({ data: subpoints.subbers });
+        if (subpoints.data.subbers) {
+            return await strapi.services['twitch-subs'].createOrUpdate({ data: subpoints.data.subbers });
         }
     }
 };
