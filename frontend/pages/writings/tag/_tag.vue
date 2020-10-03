@@ -23,6 +23,12 @@
                         :tags="blogPost.tags"
                         responsive>
                     </PostCard>
+                    <b-pagination-nav
+                        v-if="numPages > 1"
+                        align="center"
+                        :link-gen="linkGen"
+                        :number-of-pages="numPages">
+                    </b-pagination-nav>
                 </div>
             </b-col>
             <b-col sm="4">
@@ -52,12 +58,18 @@ export default {
             ],
         };
     },
+    methods: {
+        linkGen(page) {
+            return page === 1 ? '?' : `?page=${page}`;
+        }
+    },
     data() {
         return { 
             title: this.$route.params.tag,
             blogPosts: [],
+            page: +this.$route.query.page || 1,
             numPages: 1,
-            pageSize: 25,
+            pageSize: 10,
             api_url: process.env.strapiBaseUri,
             seo: {},
         }
@@ -67,7 +79,11 @@ export default {
             prefetch: true,
             query: tagQuery,
             variables() {
-                return { tag: this.$route.params.tag }
+                return { 
+                    tag: this.$route.params.tag,
+                    start: (this.page - 1) * this.pageSize,
+                    limit: this.pageSize
+                };
             },
             result(result) {
                 this.blogPosts = result.data.blogPosts;

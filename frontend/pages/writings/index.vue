@@ -137,8 +137,8 @@ export default {
             blogPosts: [],
             numPages: 1,
             api_url: process.env.strapiBaseUri,
-            page: parseInt(this.$route.query.page) || 1,
-            pageSize: 25,
+            page: +this.$route.query.page || 1,
+            pageSize: 10,
             seo: {}
         }
     },

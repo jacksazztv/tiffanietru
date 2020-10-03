@@ -73,9 +73,9 @@ export default {
     data() {
         return { 
             blogSearch: [],
-            page: parseInt(this.$route.query.page) || 1,
+            page: +this.$route.query.page || 1,
             numPages: 1,
-            pageSize: 25,
+            pageSize: 10,
             api_url: process.env.strapiBaseUri,
             seo: {},
         }
