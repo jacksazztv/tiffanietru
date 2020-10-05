@@ -1,8 +1,8 @@
 <template>
     <div v-if="$apollo.loading">
-        <b-jumbotron fluid>
+        <b-jumbotron class="py-4" fluid>
             <section>
-                <header class="text-center mb-5">
+                <header class="text-center mb-4">
                     <h1 class="display-3">
                         Writings
                         <small class="sub-heading text-muted">My Blog</small>
@@ -15,7 +15,7 @@
                 </b-row>
             </section>
         </b-jumbotron>
-        <b-container class="my-5">
+        <b-container class="py-4">
             <b-row>
                 <b-col sm="8">
                     <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
@@ -27,9 +27,9 @@
         </b-container>
     </div>
     <div v-else>
-        <b-jumbotron v-if="featuredPosts.length" fluid>
+        <b-jumbotron v-if="featuredPosts.length" class="py-4" fluid>
             <section>
-                <header class="text-center mb-5">
+                <header class="text-center mb-4">
                     <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                         {{ title }}
                         <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
@@ -52,7 +52,7 @@
                 </b-row>
             </section>
         </b-jumbotron>
-        <b-container class="my-5">
+        <b-container class="py-4">
             <header v-if="!featuredPosts.length" class="text-center mb-5">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                     {{ title }}

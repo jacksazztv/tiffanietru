@@ -1,5 +1,5 @@
 <template>
-    <b-container class="auth-form py-5">
+    <b-container class="auth-form py-4">
         <div class="text-center">
             <b-img src="~/assets/foxyfuryasmrlogoblack.png" width="100" class="rounded-circle" alt="Logo"></b-img>
             <h1>Sign in</h1>

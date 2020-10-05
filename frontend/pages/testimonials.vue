@@ -1,15 +1,15 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <b-container v-else class="py-5">
+    <b-container v-else class="py-4">
         <section>
-            <header class="text-center mb-5">
+            <header class="text-center mb-4">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                     {{ title }}
                     <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
                 </h1>
             </header>
 
-            <div v-html="$md.render(content)" class="lead content mb-5"></div>
+            <div v-html="$md.render(content)" class="lead content mb-4"></div>
 
             <TestimonialsSlider></TestimonialsSlider>
         </section>

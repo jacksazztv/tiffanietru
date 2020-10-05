@@ -2,9 +2,9 @@
   <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
   <div v-else>
     <Carousel ref="slider" />
-    <b-container class="py-5">
+    <b-container class="py-4">
       <section>
-        <header class="text-center mb-5">
+        <header class="text-center mb-4">
           <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
             {{ title }}
             <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
@@ -20,7 +20,7 @@
       </section>
     </b-container>
 
-    <div class="bg-light py-5">
+    <div class="bg-light py-4">
       <b-container>
         <section>
           <h2 class="sub-heading mb-4">Latest Writings</h2>

@@ -1,6 +1,6 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <b-container v-else class="py-5">
+    <b-container v-else class="py-4">
         <b-row>
             <b-col sm="5">
                 <b-img :src="apiUrl + productImage.url" :width="productImage.width" :height="productImage.height" :alt="title" fluid></b-img>

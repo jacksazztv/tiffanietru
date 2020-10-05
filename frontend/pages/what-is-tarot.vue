@@ -1,8 +1,8 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <b-container v-else class="py-5">
+    <b-container v-else class="py-4">
         <section>
-            <header class="text-center mb-5">
+            <header class="text-center mb-4">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                     {{ title }}
                     <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>

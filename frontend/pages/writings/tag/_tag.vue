@@ -1,6 +1,6 @@
 <template>
-    <b-container class="py-5">
-        <header class="text-center mb-5">
+    <b-container class="py-4">
+        <header class="text-center mb-4">
             <h1 class="display-3 sub-heading">{{ title }}</h1>
         </header>
         <b-row>

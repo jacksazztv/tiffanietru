@@ -1,8 +1,8 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <div v-else class="py-5 bg-light">
+    <div v-else class="py-4 bg-light">
         <b-container>
-            <h1 class="display-3 sub-heading mb-5">{{ title }}</h1>
+            <h1 class="display-3 sub-heading mb-4">{{ title }}</h1>
             <b-form v-if="cartItemsWithQuantity.length"
                 @submit.stop.prevent="onSubmit">
 
@@ -106,9 +106,10 @@
                     </b-col>
                 </b-row>
             </b-form>
-            <p v-else class="no-items-text text-muted text-center">
-                No items in cart!
-            </p>
+            <div v-else class="text-center mb-5">
+                <p class="no-items-text text-muted">Your cart is currently empty.</p>
+                <b-button variant="primary" class="text-uppercase" to="/commissions">Back to Commissions</b-button>
+            </div>
         </b-container>
     </div>
 </template>

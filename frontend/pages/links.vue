@@ -1,5 +1,5 @@
 <template>
-    <b-container class="text-center py-5 px-sm-5">
+    <b-container class="text-center py-4">
         <img class="rounded-circle" src="~/assets/pfp.jpg" width="100" height="100" alt="Avatar">
         <div class="text-muted mb-4">@foxyfury</div>
         

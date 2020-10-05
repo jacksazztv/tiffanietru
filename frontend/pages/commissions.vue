@@ -2,8 +2,8 @@
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
     <div v-else>
         <section>
-            <b-container class="py-5">
-                <header class="mb-5">
+            <b-container class="py-4">
+                <header class="mb-4">
                     <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                         {{ title }}
                         <small v-if="subTitle" class="text-muted sub-heading">{{ subTitle }}</small>
@@ -12,7 +12,7 @@
                 
                 <div class="lead content" v-html="$md.render(content)"></div>
             </b-container>
-            <b-container class="py-5 bg-light" fluid>
+            <b-container class="py-4 bg-light" fluid>
                 <b-row class="justify-content-center">
                     <b-col sm="3" class="d-flex align-items-stretch" v-for="product in shopItems" :key="product.id">
                         <ProductCard :product="product"></ProductCard>

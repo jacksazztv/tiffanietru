@@ -1,6 +1,6 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <b-container v-else class="py-5">
+    <b-container v-else class="py-4">
         <b-row>
             <b-col sm="8">
                 <article class="mb-4">
