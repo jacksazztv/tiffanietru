@@ -62,12 +62,12 @@ export default {
     },
     computed: {
         searchQuery() {
-            return this.$route.query.q;
+            return this.$route.query.q || '';
         }
     },
     methods: {
         linkGen(page) {
-            return `?q=${encodeURIComponent(this.$route.query.q)}&page=${page}`;   
+            return `?q=${encodeURIComponent(this.searchQuery)}&page=${page}`;   
         }
     },
     data() {
@@ -86,7 +86,7 @@ export default {
             query: blogSearchQuery,
             variables() {
                 return { 
-                    query: this.$route.query.q,
+                    query: this.searchQuery,
                     sort: 'created_at:desc',
                     start: (this.page - 1) * this.pageSize,
                     limit: this.pageSize
