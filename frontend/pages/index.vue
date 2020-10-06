@@ -23,10 +23,12 @@
     <div class="bg-light py-4">
       <b-container>
         <section>
-          <h2 class="sub-heading mb-4">Latest Writings</h2>
+          <h2 v-scrollanimation class="sub-heading mb-4 animated">Latest Writings</h2>
           <b-row class="justify-content-center">
             <b-col class="d-flex align-items-stretch" v-for="blogPost in blogPosts" :key="blogPost.id" md="3">
               <PostCard
+                v-scrollanimation="'fadeInUp'"
+                class="animated"
                 :img-src="api_url + blogPost.image.url"
                 :img-width="blogPost.image.width"
                 :img-height="blogPost.image.height"

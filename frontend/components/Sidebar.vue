@@ -7,7 +7,7 @@
             <b-button class="text-white" variant="primary" to="/about" size="sm">Read more</b-button>
         </div>
 
-        <div class="p-4">
+        <div class="twitter-container">
             <a class="twitter-timeline" data-chrome="nofooter" data-tweet-limit="3" href="https://twitter.com/FoxyFury?ref_src=twsrc%5Etfw">Tweets by FoxyFury</a>
         </div>
 
@@ -71,3 +71,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.twitter-container {
+    padding: 1.5rem;
+    min-height: 1438.98px;
+}
+</style>

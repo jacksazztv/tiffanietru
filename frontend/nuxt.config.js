@@ -33,6 +33,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '~/plugins/scrollanimation.js'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -137,7 +138,7 @@ export default {
       //vueLoader.options.transformAssetUrls.AnimatedImage = 'src';
     },
     babel: {
-      compact: true
+      compact: true      
     }
   },
   module: {

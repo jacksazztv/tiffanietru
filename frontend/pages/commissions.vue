@@ -12,10 +12,14 @@
                 
                 <div class="lead content" v-html="$md.render(content)"></div>
             </b-container>
-            <b-container class="py-4 bg-light" fluid>
+            <b-container class="py-4 bg-light overflow-hidden" fluid>
                 <b-row class="justify-content-center">
                     <b-col sm="3" class="d-flex align-items-stretch" v-for="product in shopItems" :key="product.id">
-                        <ProductCard :product="product"></ProductCard>
+                        <ProductCard 
+                            v-scrollanimation="'fadeInUp'"
+                            class="animated"
+                            :product="product">
+                        </ProductCard>
                     </b-col>
                 </b-row>
             </b-container>

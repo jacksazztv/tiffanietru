@@ -1,0 +1,44 @@
+.animated {
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.delay-sm {
+    transition-delay: 0.1s;
+}
+
+.delay-md {
+    transition-delay: 0.2s;
+}
+
+.delay-lg {
+    transition-delay: 0.3s;
+}
+
+.fadeIn-before-enter {
+    opacity: 0;
+}
+
+.fadeIn-enter {
+    opacity: 1;
+}
+
+.fadeInUp-before-enter {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.fadeInUp-enter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fadeInRight-before-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.fadeInRight-enter {
+    opacity: 1;
+    transform: translateX(0);
+}

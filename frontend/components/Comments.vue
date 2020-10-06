@@ -17,3 +17,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+#commento {
+    min-height: 376.5px;
+}
+</style>

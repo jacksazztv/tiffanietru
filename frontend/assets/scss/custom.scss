@@ -54,6 +54,9 @@ h1 small {
     margin: 0 0 0 10px;
 }
 
+
+@import 'animations.scss';
+
 // Import bootstrap scss
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';

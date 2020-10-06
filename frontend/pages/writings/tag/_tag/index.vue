@@ -13,6 +13,8 @@
                         <h2>No results found</h2>
                     </div>
                     <PostCard v-for="blogPost in blogPosts" :key="blogPost.id"
+                        v-scrollanimation
+                        class="animated"
                         :img-src="api_url + blogPost.image.url"
                         :img-width="blogPost.image.width"
                         :img-height="blogPost.image.height"
@@ -27,7 +29,8 @@
                         v-if="numPages > 1"
                         align="center"
                         :link-gen="linkGen"
-                        :number-of-pages="numPages">
+                        :number-of-pages="numPages"
+                        use-router>
                     </b-pagination-nav>
                 </div>
             </b-col>
@@ -60,14 +63,14 @@ export default {
     },
     methods: {
         linkGen(page) {
-            return page === 1 ? '?' : `?page=${page}`;
+            return page === 1 ? `/writings/tag/${this.$route.params.tag}` : `/writings/tag/${this.$route.params.tag}/page/${page}`;
         }
     },
     data() {
         return { 
             title: this.$route.params.tag,
             blogPosts: [],
-            page: +this.$route.query.page || 1,
+            page: 1,
             numPages: 1,
             pageSize: 10,
             api_url: process.env.strapiBaseUri,

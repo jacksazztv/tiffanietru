@@ -14,6 +14,8 @@
                         <p>Please try again with different search terms.</p>
                     </div>
                     <PostCard v-for="blogPost in blogSearch" :key="blogPost.id"
+                        v-scrollanimation
+                        class="animated"
                         :img-src="api_url + blogPost.image.url"
                         :img-width="blogPost.image.width"
                         :img-height="blogPost.image.height"
@@ -29,7 +31,8 @@
                         v-if="numPages > 1"
                         align="center"
                         :link-gen="linkGen"
-                        :number-of-pages="numPages">
+                        :number-of-pages="numPages"
+                        use-router>
                     </b-pagination-nav>
                 </div>
             </b-col>
@@ -67,13 +70,13 @@ export default {
     },
     methods: {
         linkGen(page) {
-            return `?q=${encodeURIComponent(this.searchQuery)}&page=${page}`;   
+            return page === 1 ? `/writings/search?q=${encodeURIComponent(this.searchQuery)}` : `/writings/search/page/${page}?q=${encodeURIComponent(this.searchQuery)}`;   
         }
     },
     data() {
         return { 
             blogSearch: [],
-            page: +this.$route.query.page || 1,
+            page: +this.$route.query.q || 1,
             numPages: 1,
             pageSize: 10,
             api_url: process.env.strapiBaseUri,

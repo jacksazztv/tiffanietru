@@ -1,21 +1,12 @@
 <template>
     <div v-if="$apollo.loading">
-        <b-jumbotron class="py-4" fluid>
-            <section>
-                <header class="text-center mb-4">
-                    <h1 class="display-3">
-                        Writings
-                        <small class="sub-heading text-muted">My Blog</small>
-                    </h1>
-                </header>
-                <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
-                        <PostCardSkeleton class="flex-grow-1"></PostCardSkeleton>
-                    </b-col>
-                </b-row>
-            </section>
-        </b-jumbotron>
         <b-container class="py-4">
+            <header class="text-center mb-4">
+                <h1 class="display-3">
+                    Writings
+                    <small class="sub-heading text-muted">My Blog</small>
+                </h1>
+            </header>
             <b-row>
                 <b-col sm="8">
                     <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
@@ -27,34 +18,8 @@
         </b-container>
     </div>
     <div v-else>
-        <b-jumbotron v-if="featuredPosts.length" class="py-4" fluid>
-            <section>
-                <header class="text-center mb-4">
-                    <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
-                        {{ title }}
-                        <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
-                    </h1>
-                </header>
-                <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" md>
-                        <PostCard
-                            v-scrollanimation
-                            class="flex-grow-1 animated"
-                            :img-src="api_url + blogPost.image.url"
-                            :img-width="blogPost.image.width"
-                            :img-height="blogPost.image.height"
-                            :title="blogPost.title"
-                            :sub-title="blogPost.created_at"
-                            :text="blogPost.excerpt"
-                            :tags="blogPost.tags"
-                            :slug="blogPost.slug">
-                        </PostCard>
-                    </b-col>
-                </b-row>
-            </section>
-        </b-jumbotron>
         <b-container class="py-4">
-            <header v-if="!featuredPosts.length" class="text-center mb-4">
+            <header class="text-center mb-4">
                 <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
                     {{ title }}
                     <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
@@ -63,8 +28,8 @@
             <b-row>
                 <b-col sm="8">
                     <section>
-                        <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
-                            v-scrollanimation="'fadeIn'"
+                        <PostCard v-for="blogPost in blogPosts" :key="blogPost.id"
+                            v-scrollanimation
                             class="animated"
                             :img-src="api_url + blogPost.image.url"
                             :img-width="blogPost.image.width"
@@ -115,14 +80,6 @@ export default {
             ],
         };
     },
-    computed: {
-        featuredPosts() {
-            return this.blogPosts.length > 3 ? this.blogPosts.slice(0, 3) : [];
-        },
-        otherPosts() {
-            return this.blogPosts.length > 3 ? this.blogPosts.slice(3) : this.blogPosts;
-        },
-    },
     methods: {
         linkGen(page) {
             return page === 1 ? '/writings' : `/writings/page/${page}`;
@@ -135,7 +92,7 @@ export default {
             blogPosts: [],
             numPages: 1,
             api_url: process.env.strapiBaseUri,
-            page: 1,
+            page: +this.$route.params.page || 1,
             pageSize: 10,
             seo: {}
         }
