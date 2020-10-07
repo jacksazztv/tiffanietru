@@ -4,10 +4,10 @@
         tag="article"
         class="overflow-hidden shadow-sm mb-4">
         <b-row no-gutters>
-            <b-col lg="6">
+            <b-col lg="5">
                 <div class="skeleton skeleton-image h-100"></div>
             </b-col>
-            <b-col lg="6" class="d-flex flex-column">
+            <b-col lg="7" class="d-flex flex-column">
                 <b-card-body class="flex-shrink-0">
                     <b-card-title class="skeleton skeleton-title"></b-card-title>
                     <b-card-sub-title class="skeleton skeleton-subtitle"></b-card-sub-title>

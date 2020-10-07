@@ -4,12 +4,12 @@
         tag="article"
         class="overflow-hidden shadow-sm mb-4">
         <b-row no-gutters>
-            <b-col lg="6">
+            <b-col lg="5">
                 <nuxt-link class="post-link" :to="`/writings/${slug}`">
                     <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
                 </nuxt-link>
             </b-col>
-            <b-col lg="6" class="d-flex flex-column">
+            <b-col lg="7" class="d-flex flex-column">
                 <b-card-body class="flex-shrink-0">
                     <b-card-title>
                         <nuxt-link :title="title" class="post-link" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
