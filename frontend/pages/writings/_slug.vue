@@ -122,8 +122,11 @@ export default {
 
 <style>
 .content img {
+    display: block;
     max-width: 100%;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .content blockquote {
