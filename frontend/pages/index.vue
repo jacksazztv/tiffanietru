@@ -14,13 +14,13 @@
           <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">
           </b-col>
           <b-col sm="4" order="1" order-sm="12" class="mb-4">
-            <b-img-lazy src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img-lazy>
+            <b-img-lazy v-scrollanimation class="animated" src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img-lazy>
           </b-col>
         </b-row>        
       </section>
     </b-container>
 
-    <div class="bg-light py-4">
+    <div class="bg-light py-4 overflow-hidden">
       <b-container>
         <section>
           <h2 v-scrollanimation class="sub-heading mb-4 animated">Latest Writings</h2>

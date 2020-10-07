@@ -16,7 +16,7 @@
                 <b-row class="justify-content-center">
                     <b-col sm="3" class="d-flex align-items-stretch" v-for="product in shopItems" :key="product.id">
                         <ProductCard 
-                            v-scrollanimation="'fadeInUp'"
+                            v-scrollanimation
                             class="animated"
                             :product="product">
                         </ProductCard>

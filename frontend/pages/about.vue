@@ -14,7 +14,7 @@
           <div v-html="$md.render(content)"></div>
         </b-col>
         <b-col class="mb-4" sm="4" order="1" order-sm="12">
-          <b-img src="~/assets/pfp.jpg" alt="Pfp" class="d-block w-100 rounded-circle" fluid></b-img>
+          <b-img-lazy v-scrollanimation src="~/assets/pfp.jpg" alt="Pfp" class="d-block animated w-100 rounded-circle" fluid></b-img-lazy>
         </b-col>
       </b-row>
     </section>

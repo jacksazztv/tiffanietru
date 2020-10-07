@@ -5,32 +5,43 @@
     v-model="slide"
     img-width="1500"
     img-height="500"
+    @sliding-start="onSlideStart"
+    @sliding-end="onSlideEnd"
     indicators
     fade>
-    <b-carousel-slide v-if="$apollo.loading" class="active" img-blank img-alt="Loading"></b-carousel-slide>
-    <b-carousel-slide v-else v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
+    <b-carousel-slide v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
       <template v-slot:img>
-        <b-img
+        <b-img-lazy
           class="d-block w-100 slide-img"
           width="1500"
           height="500"
-          :src="api_url + slide.image.url"
+          :src="apiUrl + slide.image.url"
           alt="Banner"
           fluid>
-        </b-img>
+        </b-img-lazy>
         <div class="black-overlay"></div>
       </template>
       <div>
-        <h3 class="text-white">{{ slide.title }}</h3>
-        <p>{{ slide.text }}</p>
-        <b-button v-for="button in slide.buttons" :key="button.id"
-          target="_blank"
-          rel="noopener noreferrer"
-          :href="button.link"
-          :style="{ backgroundColor: button.color, borderColor: button.color }">
-          <font-awesome-icon :icon="['fab', button.icon]" />
-          {{ button.text }}
-        </b-button>
+        <transition name="fadeUp1">
+          <h3 v-show="slideVisible" class="text-white">{{ slide.title }}</h3>
+        </transition>
+        <transition name="fadeUp2">
+          <p v-show="slideVisible">{{ slide.text }}</p>
+        </transition>
+        <transition-group name="fadeUp3"
+          tag="ul"
+          class="list-unstyled mb-0 d-flex align-items-center justify-content-center">
+          <li v-show="slideVisible" v-for="button in slide.buttons" :key="button.id">
+            <b-button
+              target="_blank"
+              rel="noopener noreferrer"
+              :href="button.link"
+              :style="{ backgroundColor: button.color, borderColor: button.color }">
+              <font-awesome-icon :icon="['fab', button.icon]" />
+              {{ button.text }}
+            </b-button>
+          </li>
+        </transition-group>
       </div>
     </b-carousel-slide>
   </b-carousel>
@@ -42,9 +53,21 @@ import slideQuery from '~/apollo/queries/slide/slides.gql';
 export default {
   data() {
     return {
-      api_url: process.env.strapiBaseUri,
+      apiUrl: process.env.strapiBaseUri,
       slide: 0,
+      slideVisible: false
     }
+  },
+  mounted() {
+    this.slideVisible = true;
+  },
+  methods: {
+    onSlideStart() {
+      this.slideVisible = false;
+    },
+    onSlideEnd() {
+      this.slideVisible = true;
+    },
   },
   apollo: {
     slides: {
@@ -84,5 +107,27 @@ export default {
       height: 50vh !important;
       object-fit: cover !important;
     }
+  }
+
+  .fadeUp1-enter-active, .fadeUp2-enter-active, .fadeUp3-enter-active {
+    transition: all 0.5s ease-out;
+  }
+
+  .fadeUp1-enter {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  .fadeUp2-enter, .fadeUp3-enter {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  .fadeUp2-enter-active {
+    transition-delay: 0.1s;
+  }
+
+  .fadeUp3-enter-active {
+    transition-delay: 0.2s;
   }
 </style>
