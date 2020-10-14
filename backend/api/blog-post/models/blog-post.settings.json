@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "blog_posts",
   "info": {
-    "name": "Blog Post"
+    "name": "Blog Post",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
@@ -34,15 +36,6 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "Published",
-        "Draft",
-        "Archived"
-      ],
-      "default": "Published"
     },
     "tags": {
       "collection": "tag",
