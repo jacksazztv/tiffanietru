@@ -36,10 +36,10 @@
                     </h1>
                 </header>
                 <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" md>
+                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" md="4">
                         <PostCard
                             v-scrollanimation
-                            class="flex-grow-1 animated"
+                            class="animated"
                             :img-src="api_url + blogPost.image.url"
                             :img-width="blogPost.image.width"
                             :img-height="blogPost.image.height"
