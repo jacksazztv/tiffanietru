@@ -2,6 +2,7 @@ query BlogPostsByTag($tag: String!, $start: Int, $limit: Int) {
     blogPosts(where: { tags: { name: $tag } }, sort: "created_at:desc", start: $start, limit: $limit) {
         created_at
         updated_at
+        published_at
         title
         content
         excerpt

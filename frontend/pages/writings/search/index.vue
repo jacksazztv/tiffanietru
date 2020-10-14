@@ -20,7 +20,7 @@
                         :img-width="blogPost.image.width"
                         :img-height="blogPost.image.height"
                         :title="blogPost.title"
-                        :sub-title="blogPost.created_at"
+                        :sub-title="blogPost.published_at"
                         :text="blogPost.excerpt"
                         :highlight-text="searchQuery"
                         :slug="blogPost.slug"
@@ -90,7 +90,7 @@ export default {
             variables() {
                 return { 
                     query: this.searchQuery,
-                    sort: 'created_at:desc',
+                    sort: 'published_at:desc',
                     start: (this.page - 1) * this.pageSize,
                     limit: this.pageSize
                 };

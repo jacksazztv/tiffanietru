@@ -2,6 +2,7 @@ query BlogSearch($query: String, $sort: String, $start: Int, $limit: Int) {
     blogSearch(q: $query, sort: $sort, start: $start, limit: $limit) {
         created_at
         updated_at
+        published_at
         title
         content
         excerpt
