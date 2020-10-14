@@ -33,7 +33,7 @@
                 :img-width="blogPost.image.width"
                 :img-height="blogPost.image.height"
                 :title="blogPost.title"
-                :sub-title="blogPost.created_at"
+                :sub-title="blogPost.published_at"
                 :text="blogPost.excerpt"
                 :tags="blogPost.tags"
                 :slug="blogPost.slug">
