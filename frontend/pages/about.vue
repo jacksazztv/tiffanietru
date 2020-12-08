@@ -14,7 +14,7 @@
           <div v-html="$md.render(content)"></div>
         </b-col>
         <b-col class="mb-4" sm="4" order="1" order-sm="12">
-          <b-img-lazy v-scrollanimation src="~/assets/pfp.jpg" alt="Pfp" class="d-block animated w-100 rounded-circle" fluid></b-img-lazy>
+          <b-img-lazy v-scrollanimation :src="apiUrl + photo.url" :width="photo.width" :height="photo.height" alt="Pfp" class="d-block animated w-100 rounded-circle" fluid></b-img-lazy>
         </b-col>
       </b-row>
     </section>
@@ -41,9 +41,11 @@ export default {
   },
   data() {
     return { 
+      apiUrl: process.env.strapiBaseUri,
       title: '',
       subTitle: '',
       content: '',
+      photo: {},
       seo: {},
     };
   },
@@ -56,6 +58,7 @@ export default {
           this.title = result.data.about.title;
           this.subTitle = result.data.about.subtitle;
           this.content = result.data.about.content;
+          this.photo = result.data.about.photo;
         }
       }
     },

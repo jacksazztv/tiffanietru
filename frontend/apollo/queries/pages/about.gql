@@ -3,5 +3,10 @@ query About {
     title
     subtitle
     content
+    photo {
+      url
+      width
+      height
+    }
   }
 }
