@@ -41,7 +41,7 @@
       </b-navbar-nav>
 
       <ul class="d-flex list-unstyled m-0 p-0" v-if="username">
-        <b-dropdown right>
+        <b-dropdown variant="transparent" right>
           <template slot="button-content">
             <font-awesome-icon :icon="['fa', 'user']" />
             {{ username }}
