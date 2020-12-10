@@ -35,10 +35,13 @@
         <b-nav-item to="/links" active-class="active">
           Links
         </b-nav-item>
+        <b-nav-item to="/cart" active-class="active">
+          Cart <span v-if="numberOfItems">({{ numberOfItems }})</span>
+        </b-nav-item>
       </b-navbar-nav>
 
-      <b-navbar-nav v-if="username">
-        <b-nav-item-dropdown right>
+      <ul class="d-flex list-unstyled m-0 p-0" v-if="username">
+        <b-dropdown right>
           <template slot="button-content">
             <font-awesome-icon :icon="['fa', 'user']" />
             {{ username }}
@@ -46,22 +49,16 @@
           <b-dropdown-item @click="onLogout">
             Logout
           </b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item to="/cart">
-          <font-awesome-icon :icon="['fa', 'shopping-cart']" /> <span class="sr-only">Cart</span> {{ numberOfItems }}
-        </b-nav-item>
-      </b-navbar-nav>
-      <b-navbar-nav v-else>
-        <b-nav-item to="/login" active>
-          Sign in
-        </b-nav-item>
-        <b-nav-item  class="bg-primary rounded" link-classes="text-white" to="/register" active>
-          Sign up
-        </b-nav-item>
-        <b-nav-item to="/cart">
-          <font-awesome-icon :icon="['fa', 'shopping-cart']" /> <span class="sr-only">Cart</span> {{ numberOfItems }}
-        </b-nav-item>
-      </b-navbar-nav>
+        </b-dropdown>
+      </ul>
+      <ul class="d-flex list-unstyled m-0 p-0" v-else>
+        <li>
+          <b-button variant="transparent" to="/login">Sign in</b-button>
+        </li>
+        <li>
+          <b-button variant="primary" to="/register">Sign up</b-button>
+        </li>
+      </ul>
     </b-collapse>
   </b-navbar>
 </div>
@@ -99,7 +96,29 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .nav-link, .nav-link-dropdown-toggle {
-    font-weight: 500;
+  .nav-link {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .nav-link::before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.7);
+    width: calc(100% - 1rem);
+    height: 1px;
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    visibility: hidden;
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
   }
 </style>

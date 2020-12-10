@@ -118,7 +118,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight', 'faShoppingCart', 'faTrashAlt', 'faPlus', 'faMinus'],
+      solid: ['faLock', 'faGift', 'faTag', 'faUser', 'faSearch', 'faAngleDoubleLeft', 'faAngleDoubleRight', 'faTrashAlt', 'faPlus', 'faMinus'],
       brands: ['faYoutube', 'faPatreon', 'faTwitter', 'faTwitch', 'faDiscord', 'faInstagram', 'faAmazon']
     }
   },

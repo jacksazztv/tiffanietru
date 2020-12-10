@@ -1,6 +1,6 @@
 <template>
     <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
-    <div v-else class="py-4 bg-light">
+    <div v-else class="py-4">
         <b-container>
             <h1 class="display-3 sub-heading mb-4">{{ title }}</h1>
             <b-form v-if="cartItemsWithQuantity.length"

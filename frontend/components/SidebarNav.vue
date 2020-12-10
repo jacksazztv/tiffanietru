@@ -41,70 +41,11 @@
                     <b-nav-item to="/links" active-class="active">
                         Links
                     </b-nav-item>
+                    <b-nav-item to="/cart" active-class="active">
+                        Cart <span v-if="numberOfItems">({{ numberOfItems }})</span>
+                    </b-nav-item>
                 </b-nav>
             </nav>
-        </div>
-        <hr />
-        <div class="px-3 pb-2">
-          <nav>
-            <b-nav vertical>
-              <b-nav-item
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.twitch.tv/foxyfurytv">
-                <font-awesome-icon :icon="['fab', 'twitch']" />
-                <span>Twitch</span>
-              </b-nav-item>
-              <b-nav-item-dropdown toggle-class="toggle-custom">
-                <template slot="button-content">
-                  <font-awesome-icon :icon="['fab', 'instagram']" />
-                  <span>Instagram</span>
-                </template>
-                <b-dropdown-item
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.instagram.com/foxyfurytv">
-                  Instagram
-                </b-dropdown-item>
-                <b-dropdown-item
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://www.instagram.com/tiffsasmr">
-                  ASMR Insta
-                </b-dropdown-item>
-              </b-nav-item-dropdown>
-              <b-nav-item
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://twitter.com/FoxyFury"
-              >
-                <font-awesome-icon :icon="['fab', 'twitter']" />
-                <span>Twitter</span>
-              </b-nav-item>
-              <b-nav-item
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA"
-              >
-                <font-awesome-icon :icon="['fab', 'youtube']" />
-                <span>YouTube</span>
-              </b-nav-item>
-              <b-nav-item
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.patreon.com/asmrtiff">
-                <font-awesome-icon :icon="['fab', 'patreon']" />
-                <span>Patreon</span>
-              </b-nav-item>
-              <b-nav-item
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://onlyfans.com/foxyfury">
-                <font-awesome-icon :icon="['fa', 'lock']" />
-                <span>OnlyFans</span>
-              </b-nav-item>
-            </b-nav>
-          </nav>
         </div>
         <hr />
         <div class="px-3 pb-2">
@@ -121,6 +62,9 @@ export default {
   computed: {
     tarotMenuActive() {
       return ['/what-is-tarot', '/horoscopes', '/commissions', '/testimonials'].includes(this.$nuxt.$route.path);
+    },
+    numberOfItems() {
+      return this.$store.getters['cart/numberOfItems'];
     }
   },
   components: {
