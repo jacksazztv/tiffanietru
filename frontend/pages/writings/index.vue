@@ -25,7 +25,7 @@
                     :key="featuredPost.id"
                     class="d-flex align-items-stretch mb-4"
                     :md="i === 0 ? 6 : 3">
-                    <FeaturedTile class="animated" v-scrollanimation="'fadeIn'" :post="featuredPost"></FeaturedTile>
+                    <FeaturedTile :primary="i === 0" class="animated" v-scrollanimation="'fadeIn'" :post="featuredPost"></FeaturedTile>
                 </b-col>
             </b-row>
         </b-jumbotron>

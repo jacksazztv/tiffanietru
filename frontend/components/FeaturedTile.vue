@@ -1,16 +1,16 @@
 <template>
     <div class="featured-post" 
         :style="{backgroundImage: `url(${apiUrl + post.image.url})`}">
-        <nuxt-link draggable="false" :to="`/writings/${post.slug}`">
+        <nuxt-link draggable="false" :to="`/writings/${post.slug}`" :title="post.title">
             <div class="featured-post-content">
-                <ul class="d-flex list-unstyled p-0 m-0">
+                <ul class="d-flex flex-wrap list-unstyled p-0 m-0">
                     <li v-for="tag in post.tags" :key="tag.id">
-                        <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1" variant="primary" size="sm">{{ tag.name }}</b-button>
+                        <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                     </li>
                 </ul>
-                <h4 class="text-white mb-0">
+                <component :is="primary ? 'h3' : 'h4'" class="featured-title">
                     {{ post.title }}
-                </h4>
+                </component>
             </div>
         </nuxt-link>
     </div>
@@ -40,33 +40,28 @@
     padding: 0.75rem;
     background: rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
-    overflow: hidden;
-      /* These are technically the same, but use both */
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-
-    -ms-word-break: break-all;
-    /* This is the dangerous one in WebKit, as it breaks things wherever */
-    word-break: break-all;
-    /* Instead use this non-standard one: */
-    word-break: break-word;
-
-    /* Adds a hyphen where the word breaks, if supported (No Blink) */
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
 }
 
 .featured-post-content:hover {
     background: rgba(0, 0, 0, 0.3);
+}
+
+.featured-title {
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0;
 }
 </style>
 
 <script>
 export default {
     props: {
-        post: Object
+        post: Object,
+        primary: Boolean
     },
     data() {
         return {
