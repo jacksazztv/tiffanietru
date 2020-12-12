@@ -22,8 +22,8 @@
                 </b-card-body>
                 <b-card-footer v-if="tags.length" class="mt-auto">
                     <ul class="list-unstyled mb-0 d-flex flex-row">
-                        <li v-for="tag in tags" :key="tag.name" class="mr-1">
-                            <b-button :to="`/writings/tag/${tag.name}`" class="text-white" variant="primary" size="sm">{{ tag.name }}</b-button>
+                        <li v-for="tag in tags" :key="tag.name">
+                            <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                         </li>
                     </ul>
                 </b-card-footer>
@@ -35,7 +35,6 @@
         tag="article"
         class="overflow-hidden w-100 shadow-sm mb-4">
 
-        
         <nuxt-link class="post-link" :to="`/writings/${slug}`">
             <div class="aspect-ratio-box">
                 <div class="aspect-ratio-box-inner">
@@ -58,8 +57,8 @@
 
         <b-card-footer v-if="tags.length" class="mt-auto">
             <ul class="list-unstyled mb-0 d-flex flex-row">
-                <li v-for="tag in tags" :key="tag.name" class="mr-1">
-                    <b-button :to="`/writings/tag/${tag.name}`" class="text-white" variant="primary" size="sm">{{ tag.name }}</b-button>
+                <li v-for="tag in tags" :key="tag.name">
+                    <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                 </li>
             </ul>
         </b-card-footer>

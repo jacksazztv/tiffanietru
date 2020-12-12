@@ -12,6 +12,7 @@ query BlogPosts($start: Int, $limit: Int) {
             height
         }
         tags {
+            id
             name
         }
         slug

@@ -1,19 +1,11 @@
 <template>
     <div v-if="$apollo.loading">
         <b-jumbotron class="py-4" fluid>
-            <section>
-                <header class="text-center mb-4">
-                    <h1 class="display-3">
-                        Writings
-                        <small class="sub-heading text-muted">My Blog</small>
-                    </h1>
-                </header>
-                <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
-                        <PostCardSkeleton class="flex-grow-1"></PostCardSkeleton>
-                    </b-col>
-                </b-row>
-            </section>
+            <b-row>
+                <b-col class="d-flex align-items-stretch" v-for="i in 3" :key="i" sm>
+                    <PostCardSkeleton class="flex-grow-1"></PostCardSkeleton>
+                </b-col>
+            </b-row>
         </b-jumbotron>
         <b-container class="py-4">
             <b-row>
@@ -27,63 +19,39 @@
         </b-container>
     </div>
     <div v-else>
-        <b-jumbotron v-if="featuredPosts.length" class="py-4" fluid>
-            <section>
-                <header class="text-center mb-4">
-                    <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
-                        {{ title }}
-                        <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
-                    </h1>
-                </header>
-                <b-row>
-                    <b-col class="d-flex align-items-stretch" v-for="blogPost in featuredPosts" :key="blogPost.id" md="4">
-                        <PostCard
-                            v-scrollanimation
-                            class="animated"
-                            :img-src="api_url + blogPost.image.url"
-                            :img-width="blogPost.image.width"
-                            :img-height="blogPost.image.height"
-                            :title="blogPost.title"
-                            :sub-title="blogPost.published_at"
-                            :text="blogPost.excerpt"
-                            :tags="blogPost.tags"
-                            :slug="blogPost.slug">
-                        </PostCard>
-                    </b-col>
-                </b-row>
-            </section>
+        <b-jumbotron v-if="featuredPosts.length" class="pt-4 pb-0 mb-0" fluid>
+            <b-row no-gutters>
+                <b-col v-for="(featuredPost, i) in featuredPosts" 
+                    :key="featuredPost.id"
+                    class="d-flex align-items-stretch mb-4"
+                    :md="i === 0 ? 6 : 3">
+                    <FeaturedTile class="animated" v-scrollanimation="'fadeIn'" :post="featuredPost"></FeaturedTile>
+                </b-col>
+            </b-row>
         </b-jumbotron>
         <b-container class="py-4">
-            <header v-if="!featuredPosts.length" class="text-center mb-4">
-                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
-                    {{ title }}
-                    <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
-                </h1>
-            </header>
             <b-row>
                 <b-col sm="8">
-                    <section>
-                        <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
-                            v-scrollanimation="'fadeIn'"
-                            class="animated"
-                            :img-src="api_url + blogPost.image.url"
-                            :img-width="blogPost.image.width"
-                            :img-height="blogPost.image.height"
-                            :title="blogPost.title"
-                            :subTitle="blogPost.published_at"
-                            :text="blogPost.excerpt"
-                            :slug="blogPost.slug"
-                            :tags="blogPost.tags"
-                            responsive>
-                        </PostCard>
-                        <b-pagination-nav
-                            v-if="numPages > 1"
-                            align="center"
-                            :link-gen="linkGen"
-                            :number-of-pages="numPages"
-                            use-router>
-                        </b-pagination-nav>
-                    </section>
+                    <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
+                        v-scrollanimation="'fadeIn'"
+                        class="animated"
+                        :img-src="api_url + blogPost.image.url"
+                        :img-width="blogPost.image.width"
+                        :img-height="blogPost.image.height"
+                        :title="blogPost.title"
+                        :subTitle="blogPost.published_at"
+                        :text="blogPost.excerpt"
+                        :slug="blogPost.slug"
+                        :tags="blogPost.tags"
+                        responsive>
+                    </PostCard>
+                    <b-pagination-nav
+                        v-if="numPages > 1"
+                        align="center"
+                        :link-gen="linkGen"
+                        :number-of-pages="numPages"
+                        use-router>
+                    </b-pagination-nav>
                 </b-col>
                 <b-col sm="4">
                     <Sidebar></Sidebar>
@@ -95,6 +63,7 @@
 </template>
 
 <script>
+import FeaturedTile from '~/components/FeaturedTile.vue';
 import PostCard from '~/components/PostCard.vue';
 import PostCardSkeleton from '~/components/PostCardSkeleton.vue';
 import Sidebar from '~/components/Sidebar.vue';
@@ -171,9 +140,10 @@ export default {
         }
     },
     components: {
+        FeaturedTile,
         PostCard,
         PostCardSkeleton,
-        Sidebar,
+        Sidebar
     },
 }
 </script>

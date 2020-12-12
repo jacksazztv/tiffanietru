@@ -1,12 +1,9 @@
 <template>
     <div v-if="$apollo.loading">
         <b-container class="py-4">
-            <header class="text-center mb-4">
-                <h1 class="display-3">
-                    Writings
-                    <small class="sub-heading text-muted">My Blog</small>
-                </h1>
-            </header>
+            <h1 class="display-3 sub-heading mb-4">
+                Page {{ page }}
+            </h1>
             <b-row>
                 <b-col sm="8">
                     <PostCardSkeleton v-for="i in 3" :key="i" responsive></PostCardSkeleton>
@@ -19,12 +16,9 @@
     </div>
     <div v-else>
         <b-container class="py-4">
-            <header class="text-center mb-4">
-                <h1 :class="['display-3', { 'sub-heading': !subTitle }]">
-                    {{ title }}
-                    <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
-                </h1>
-            </header>
+            <h1 class="display-3 sub-heading mb-4">
+                Page {{ page }}
+            </h1>
             <b-row>
                 <b-col sm="8">
                     <section>

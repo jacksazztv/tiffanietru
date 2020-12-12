@@ -1,5 +1,6 @@
 query Tag($tag: String!) {
     tags(where: { name: $tag }) {
+        id
         name
         blogPosts(sort: "created_at:desc") {
             id

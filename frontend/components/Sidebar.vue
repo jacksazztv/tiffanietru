@@ -15,7 +15,7 @@
             <h4><small><font-awesome-icon :icon="['fa', 'tag']" /></small> Tags</h4>
             <ul class="list-unstyled mb-0 d-flex flex-row flex-wrap" style="text-transform: lowercase">
                 <li v-for="tag in tags" :key="tag.id">
-                    <b-button :to="`/writings/tag/${tag.name}`" class="text-white mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
+                    <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                 </li>
             </ul>
         </div>

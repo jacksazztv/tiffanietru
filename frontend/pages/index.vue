@@ -10,13 +10,7 @@
             <small v-if="subTitle" class="sub-heading text-muted">{{ subTitle }}</small>
           </h1>
         </header>
-        <b-row>
-          <b-col sm="8" order="12" order-sm="1" v-html="$md.render(content)">
-          </b-col>
-          <b-col sm="4" order="1" order-sm="12" class="mb-4">
-            <b-img-lazy v-scrollanimation class="animated" src="~/assets/foxyfuryasmrlogoblack.png" alt="Image" fluid></b-img-lazy>
-          </b-col>
-        </b-row>        
+        <div class="text-center lead" v-html="$md.render(content)"></div>     
       </section>
     </b-container>
 
@@ -49,6 +43,7 @@
 <script>
 import LoadingComponent from '~/components/LoadingComponent.vue';
 import Carousel from "~/components/Carousel.vue";
+import FeaturedTile from '~/components/FeaturedTile.vue';
 import PostCard from "~/components/PostCard.vue";
 import blogPostsQuery from "~/apollo/queries/blog-post/blog-posts.gql";
 import homeQuery from "~/apollo/queries/pages/home.gql";
@@ -79,6 +74,7 @@ export default {
   },
   components: {
     Carousel,
+    FeaturedTile,
     PostCard,
     LoadingComponent
   },
