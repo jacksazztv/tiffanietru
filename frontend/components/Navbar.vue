@@ -103,7 +103,7 @@ export default {
     text-transform: uppercase;
   }
 
-  .nav-link::before {
+  .navbar-nav .nav-link::before {
     content: '';
     background-color: rgba(0, 0, 0, 0.7);
     width: calc(100% - 1rem);
@@ -117,7 +117,7 @@ export default {
     transition: all 0.3s ease-in-out;
   }
 
-  .nav-link:hover::before {
+  .navbar-nav .nav-link:hover::before {
     visibility: visible;
     transform: scaleX(1);
   }
