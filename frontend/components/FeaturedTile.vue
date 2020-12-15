@@ -1,18 +1,18 @@
 <template>
-    <div class="featured-post" 
-        :style="{backgroundImage: `url(${apiUrl + post.image.url})`}">
-        <nuxt-link draggable="false" :to="`/writings/${post.slug}`" :title="post.title">
-            <div class="featured-post-content">
-                <ul class="d-flex flex-wrap list-unstyled p-0 m-0">
-                    <li v-for="tag in post.tags" :key="tag.id">
-                        <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
-                    </li>
-                </ul>
+    <div class="featured-post">
+        <b-img-lazy class="featured-post-background" :src="apiUrl + post.image.url" :width="post.image.width" :height="post.image.height" :alt="post.title"></b-img-lazy>
+        <div class="featured-post-content">
+            <ul class="featured-tags">
+                <li v-for="tag in post.tags" :key="tag.id">
+                    <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
+                </li>
+            </ul>
+            <nuxt-link draggable="false" class="featured-link" :to="`/writings/${post.slug}`" :title="post.title">
                 <component :is="primary ? 'h3' : 'h4'" class="featured-title">
                     {{ post.title }}
                 </component>
-            </div>
-        </nuxt-link>
+            </nuxt-link>
+        </div>
     </div>
 </template>
 
@@ -22,10 +22,16 @@
     width: 100%;
     height: 100%;
     padding-top: 56.25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     margin: 0 2px;
+}
+
+.featured-post-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .featured-post-content {
@@ -54,6 +60,29 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     margin-bottom: 0;
+}
+
+.featured-tags {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+}
+
+.featured-link {
+    text-decoration: none;
+    z-index: 1;
+}
+
+.featured-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 </style>
 
