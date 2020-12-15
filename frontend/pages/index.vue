@@ -1,7 +1,7 @@
 <template>
   <LoadingComponent v-if="$apollo.loading"></LoadingComponent>
   <div v-else>
-    <Carousel ref="slider" />
+    <Carousel />
     <b-container class="py-4">
       <section>
         <header class="text-center mb-4">

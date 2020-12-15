@@ -9,15 +9,14 @@
     @sliding-end="onSlideEnd"
     indicators
     fade>
-    <b-carousel-slide v-for="(slide, i) in slides" :key="slide.id" :class="{ active: i === 0 }">
+    <b-carousel-slide v-for="(slide, i) in slides" :key="slide.id" :class="['h-100', {active: i === 0}]">
       <template v-slot:img>
         <b-img-lazy
-          class="d-block w-100 slide-img"
+          class="d-block w-100 h-100 slide-img"
           width="1500"
           height="500"
           :src="apiUrl + slide.image.url"
-          alt="Banner"
-          fluid>
+          :alt="slide.title">
         </b-img-lazy>
         <div class="black-overlay"></div>
       </template>
@@ -78,6 +77,26 @@ export default {
 }
 </script>
 
+<style>
+.carousel {
+  padding-top: 33.33%;
+}
+
+@media (max-width: 767.98px) {
+  .carousel {
+    padding-top: 50vh;
+  }
+}
+
+.carousel-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
 <style scoped>
   .btn {
     transition: opacity 0.2s ease-in-out;
@@ -99,14 +118,7 @@ export default {
   }
 
   .slide-img {
-    min-width: 100%;
-  }
-
-  @media (max-width: 767.98px) {
-    .slide-img {
-      height: 50vh !important;
-      object-fit: cover !important;
-    }
+    object-fit: cover;
   }
 
   .fadeUp1-enter-active, .fadeUp2-enter-active, .fadeUp3-enter-active {
