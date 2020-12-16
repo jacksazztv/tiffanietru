@@ -2,8 +2,8 @@
     <div class="featured-post">
         <b-img-lazy class="featured-post-background" :src="apiUrl + post.image.url" :width="post.image.width" :height="post.image.height" :alt="post.title"></b-img-lazy>
         <div class="featured-post-content">
-            <ul class="featured-tags">
-                <li v-for="tag in post.tags" :key="tag.id">
+            <ul class="d-flex flex-wrap list-unstyled m-0 p-0">
+                <li v-for="tag in post.tags" class="featured-tag" :key="tag.id">
                     <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1 mb-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                 </li>
             </ul>
@@ -62,18 +62,13 @@
     margin-bottom: 0;
 }
 
-.featured-tags {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.featured-tag {
+    position: relative;
     z-index: 2;
 }
 
 .featured-link {
     text-decoration: none;
-    z-index: 1;
 }
 
 .featured-link::before {
@@ -83,6 +78,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 </style>
 
