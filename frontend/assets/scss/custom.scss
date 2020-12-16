@@ -35,7 +35,7 @@ h1 small {
 @import 'animations.scss';
 
 // Import bootstrap scss
-@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-custom.scss';
 @import 'bootstrap-vue/src/index.scss';
 
 @include media-breakpoint-down(sm) {
