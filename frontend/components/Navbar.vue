@@ -91,14 +91,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '~/assets/scss/custom-vars.scss';
+
   .navbar {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .nav-link {
     position: relative;
-    font-family: 'Oswald', sans-serif;
+    font-family: $headings-font-family;
     font-weight: 400;
     text-transform: uppercase;
   }

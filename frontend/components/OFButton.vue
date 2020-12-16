@@ -115,7 +115,11 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+    @import '~bootstrap/scss/functions';
+    @import '~bootstrap/scss/variables';
+    @import '~bootstrap/scss/mixins/breakpoints';
+    
     #parent {
         position: relative;
         height: 60px;
@@ -161,7 +165,7 @@ export default {
         transform: translateY(-900px);
     }
 
-    @media (max-width: 767.98px) {
+    @include media-breakpoint-down(sm) {
         .of-info {
             font-size: 0.8rem;
         }

@@ -1,6 +1,6 @@
 <template>
   <b-carousel
-    id="carouselSlider"
+    id="carousel-slider"
     controls
     v-model="slide"
     img-width="1500"
@@ -77,18 +77,22 @@ export default {
 }
 </script>
 
-<style>
-.carousel {
+<style lang="scss">
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+
+#carousel-slider {
   padding-top: 33.33%;
 }
 
-@media (max-width: 767.98px) {
-  .carousel {
+@include media-breakpoint-down(sm) {
+  #carousel-slider {
     padding-top: 50vh;
   }
 }
 
-.carousel-inner {
+#carousel-slider .carousel-inner {
   position: absolute;
   top: 0;
   left: 0;

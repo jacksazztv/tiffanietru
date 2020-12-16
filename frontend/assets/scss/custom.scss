@@ -1,21 +1,4 @@
-$dark: #191919;
-$primary: #d7608b;
-$secondary: #252525;
-$purple: #9146FF;
-
-// $gray-200
-$light: #e9ecef;
-
-$font-family-base: 'Roboto', sans-serif;
-$headings-font-family: 'Oswald', sans-serif;
-$btn-font-family: 'Oswald', sans-serif;
-
-$headings-color: $primary;
-
-$jumbotron-padding: 1.5rem;
-
-$btn-focus-box-shadow: none !important;
-$btn-active-box-shadow: none !important;
+@import 'custom-vars.scss';
 
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
@@ -23,12 +6,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 small {
     font-size: 40%;
-}
-
-@media (max-width: 767.98px) {
-    .display-3 {
-        font-size: 2.5rem !important;
-    }
 }
 
 .sub-heading {
@@ -60,3 +37,9 @@ h1 small {
 // Import bootstrap scss
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';
+
+@include media-breakpoint-down(sm) {
+    .display-3 {
+        font-size: 2.5rem !important;
+    }
+}

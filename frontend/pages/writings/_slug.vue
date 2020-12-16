@@ -120,7 +120,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~/assets/scss/custom-vars.scss';
+
 .content img {
     display: block;
     max-width: 100%;
@@ -175,7 +177,7 @@ export default {
 
 .post-nav-label {
     text-transform: uppercase;
-    font-family: 'Oswald', sans-serif;
+    font-family: $headings-font-family;
     letter-spacing: 0.5px;
 }
 
