@@ -6,23 +6,23 @@
         <b-row no-gutters>
             <b-col lg="5">
                 <nuxt-link class="post-link" :to="`/writings/${slug}`">
-                    <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 h-100"></b-card-img-lazy>
+                    <b-card-img-lazy :width="post.image.width" :height="post.image.height" :src="apiUrl + post.image.url" :alt="post.title" class="rounded-0 h-100"></b-card-img-lazy>
                 </nuxt-link>
             </b-col>
             <b-col lg="7" class="d-flex flex-column">
                 <b-card-body class="flex-shrink-0">
                     <b-card-title>
-                        <nuxt-link :title="title" class="post-link" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
+                        <nuxt-link :title="title" class="post-link" :to="`/writings/${post.slug}`">{{ post.title }}</nuxt-link>
                     </b-card-title>
-                    <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
+                    <b-card-sub-title sub-title-tag="time" :datetime="post.published_at" class="d-block mb-2">{{ $dayjs(post.published_at).format('MMM D, YYYY') }}</b-card-sub-title>
                     <div class="position-relative">
                         <b-card-text v-html="cardBody"></b-card-text>
                         <div class="read-more"></div>
                     </div>
                 </b-card-body>
-                <b-card-footer v-if="tags.length" class="mt-auto">
+                <b-card-footer v-if="post.tags.length" class="mt-auto">
                     <ul class="list-unstyled mb-0 d-flex flex-row">
-                        <li v-for="tag in tags" :key="tag.name">
+                        <li v-for="tag in post.tags" :key="tag.name">
                             <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                         </li>
                     </ul>
@@ -35,10 +35,10 @@
         tag="article"
         class="overflow-hidden w-100 shadow-sm mb-4">
 
-        <nuxt-link class="post-link" :to="`/writings/${slug}`">
+        <nuxt-link class="post-link" :to="`/writings/${post.slug}`">
             <div class="aspect-ratio-box">
                 <div class="aspect-ratio-box-inner">
-                    <b-card-img-lazy :width="imgWidth" :height="imgHeight" :src="imgSrc" alt="Image" class="rounded-0 d-block w-100" fluid></b-card-img-lazy>
+                    <b-card-img-lazy :width="post.image.width" :height="post.image.height" :src="apiUrl + post.image.url" :alt="post.title" class="rounded-0 d-block w-100" fluid></b-card-img-lazy>
                 </div>
             </div>
         </nuxt-link>
@@ -46,18 +46,18 @@
 
         <b-card-body>
             <b-card-title>
-                <nuxt-link :title="title" class="post-link" :to="`/writings/${slug}`">{{ title }}</nuxt-link>
+                <nuxt-link :title="post.title" class="post-link" :to="`/writings/${post.slug}`">{{ post.title }}</nuxt-link>
             </b-card-title>
-            <b-card-sub-title sub-title-tag="time" :datetime="subTitle" class="d-block mb-2">{{ $dayjs(subTitle).format('MMM D, YYYY') }}</b-card-sub-title>
+            <b-card-sub-title sub-title-tag="time" :datetime="post.published_at" class="d-block mb-2">{{ $dayjs(post.published_at).format('MMM D, YYYY') }}</b-card-sub-title>
             <div class="position-relative">
                 <b-card-text v-html="cardBody"></b-card-text>
                 <div class="read-more"></div>
             </div>
         </b-card-body>
 
-        <b-card-footer v-if="tags.length" class="mt-auto">
+        <b-card-footer v-if="post.tags.length" class="mt-auto">
             <ul class="list-unstyled mb-0 d-flex flex-row">
-                <li v-for="tag in tags" :key="tag.name">
+                <li v-for="tag in post.tags" :key="tag.name">
                     <b-button :to="`/writings/tag/${tag.name}`" class="rounded-0 mr-1" variant="primary" size="sm">{{ tag.name }}</b-button>
                 </li>
             </ul>
@@ -70,24 +70,22 @@ export default {
     computed: {
         cardBody() {
             if (!this.highlightText) {
-                return this.text;
+                return this.post.excerpt;
             }
-            return this.text.replace(new RegExp(this.highlightText, 'gi'), match => {
+            return this.post.excerpt.replace(new RegExp(this.highlightText, 'gi'), match => {
                 return '<mark>' + match + '</mark>';
             });
         }
     },
     props: {
-        imgSrc: String,
-        imgWidth: Number,
-        imgHeight: Number,
-        slug: String,
-        title: String,
-        subTitle: String,
-        text: String,
+        post: Object,
         highlightText: String,
-        tags: Array,
         responsive: Boolean
+    },
+    data() {
+        return {
+            apiUrl: process.env.strapiBaseUri
+        };
     }
 }
 </script>

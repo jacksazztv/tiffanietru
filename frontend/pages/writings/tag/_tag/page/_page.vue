@@ -15,14 +15,7 @@
                     <PostCard v-for="blogPost in blogPosts" :key="blogPost.id"
                         v-scrollanimation
                         class="animated"
-                        :img-src="api_url + blogPost.image.url"
-                        :img-width="blogPost.image.width"
-                        :img-height="blogPost.image.height"
-                        :title="blogPost.title"
-                        :sub-title="blogPost.published_at"
-                        :text="blogPost.excerpt"
-                        :slug="blogPost.slug"
-                        :tags="blogPost.tags"
+                        :post="blogPost"
                         responsive>
                     </PostCard>
                     <b-pagination-nav

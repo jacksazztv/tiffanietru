@@ -23,14 +23,7 @@
               <PostCard
                 v-scrollanimation="'fadeInUp'"
                 class="animated"
-                :img-src="api_url + blogPost.image.url"
-                :img-width="blogPost.image.width"
-                :img-height="blogPost.image.height"
-                :title="blogPost.title"
-                :sub-title="blogPost.published_at"
-                :text="blogPost.excerpt"
-                :tags="blogPost.tags"
-                :slug="blogPost.slug">
+                :post="blogPost">
               </PostCard>
             </b-col>
           </b-row>

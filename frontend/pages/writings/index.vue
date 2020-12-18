@@ -19,7 +19,7 @@
         </b-container>
     </div>
     <div v-else>
-        <b-jumbotron v-if="featuredPosts.length" class="pt-4 pb-0 mb-0" fluid>
+        <b-jumbotron v-if="featuredPosts.length" class="d-none d-md-block pt-4 pb-0 mb-0" fluid>
             <b-row no-gutters>
                 <b-col v-for="(featuredPost, i) in featuredPosts" 
                     :key="featuredPost.id"
@@ -32,17 +32,18 @@
         <b-container class="py-4">
             <b-row>
                 <b-col sm="8">
+                    <div class="d-md-none">
+                        <PostCard v-for="blogPost in featuredPosts" :key="blogPost.id"
+                            v-scrollanimation="'fadeIn'"
+                            class="animated"
+                            :post="blogPost"
+                            responsive>
+                        </PostCard>
+                    </div>
                     <PostCard v-for="blogPost in otherPosts" :key="blogPost.id"
                         v-scrollanimation="'fadeIn'"
                         class="animated"
-                        :img-src="api_url + blogPost.image.url"
-                        :img-width="blogPost.image.width"
-                        :img-height="blogPost.image.height"
-                        :title="blogPost.title"
-                        :subTitle="blogPost.published_at"
-                        :text="blogPost.excerpt"
-                        :slug="blogPost.slug"
-                        :tags="blogPost.tags"
+                        :post="blogPost"
                         responsive>
                     </PostCard>
                     <b-pagination-nav
