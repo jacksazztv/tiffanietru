@@ -1,13 +1,13 @@
 <template>
-    <b-button target="_blank" rel="noopener noreferrer" href="https://onlyfans.com/foxyfury" class="text-dark w-100 px-4 py-2 bg-white overflow-hidden" style="background-color: #fff; border: 2px solid #2aace2">
+    <b-button target="_blank" rel="noopener noreferrer" href="https://onlyfans.com/petitetiff" class="text-dark w-100 px-4 py-2 bg-white overflow-hidden" style="background-color: #fff; border: 2px solid #2aace2">
         <div id="parent">
             <div id="wrapper" class="d-flex flex-row align-items-center">
                 <div class="of-logo-wrapper">
                     <OFLogo class="of-logo" height="50" />
                 </div>
                 <div class="of-info flex-shrink-0 ml-auto mr-auto">
-                    <img src="~/assets/ofpfp.jpg" width="40" height="40" alt="FoxyFury">
-                    <span class="letter">@</span><span class="letter">F</span><span class="letter">o</span><span class="letter">x</span><span class="letter">y</span><span class="letter">F</span><span class="letter">u</span><span class="letter">r</span><span class="letter">y</span>
+                    <img src="~/assets/ofpfp.jpg" width="40" height="40" alt="petitetiff">
+                    <span class="letter">@</span><span class="letter">p</span><span class="letter">e</span><span class="letter">t</span><span class="letter">i</span><span class="letter">t</span><span class="letter">e</span><span class="letter">t</span><span class="letter">i</span><span class="letter">f</span><span class="letter">f</span>
                 </div>
                 <div class="of-btn-wrapper flex-shrink-0">
                     <button class="of-subscribe-btn"><span class="letter">S</span><span class="letter">u</span><span class="letter">b</span><span class="letter">s</span><span class="letter">c</span><span class="letter">r</span><span class="letter">i</span><span class="letter">b</span><span class="letter">e</span></button>
