@@ -47,7 +47,7 @@
       </b-container>
     </b-container>
     <b-container class="py-5">
-      <span>© 2020 <a href="#">Tiffanie Tru</a> | All Rights Reserved</span>
+      <span>© 2021 <a href="#">Tiffanie Tru</a> | All Rights Reserved</span>
     </b-container>
   </div>
 </template>
