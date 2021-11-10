@@ -1,7 +1,7 @@
 <template>
     <b-container class="auth-form py-4">
         <div class="text-center">
-            <b-img src="~/assets/foxyfuryasmrlogoblack.png" width="100" class="rounded-circle" alt="Logo"></b-img>
+            <b-img src="~/assets/neonfox.svg" width="150" class="rounded-circle" alt="Logo"></b-img>
             <h1>Sign in</h1>
             <b-alert v-model="showDismissibleAlert" variant="danger" dismissible>Incorrect email or password.</b-alert>
         </div>
@@ -38,7 +38,7 @@
                 </b-form-group>
 
                 <b-button type="submit" variant="primary" class="mb-2 w-100 text-white">Sign in</b-button>
-                <p class="mb-2 text-muted text-center">Or</p>
+                <div class="or-divider mb-2 text-muted">OR</div>
                 <b-button :href="`${apiUrl}/connect/twitch`" class="twitch-btn"><font-awesome-icon :icon="['fab', 'twitch']" /> Connect with Twitch</b-button>
             </b-form>
         </b-card>
@@ -121,6 +121,26 @@ export default {
 
     .auth-form label {
         font-weight: bold !important;
+    }
+
+    .or-divider {
+        display: flex;
+        align-items: center;
+    }
+
+    .or-divider::before, .or-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .or-divider::before {
+        margin-right: 10px;
+    }
+
+    .or-divider::after {
+        margin-left: 10px;
     }
 
     .twitch-btn {
