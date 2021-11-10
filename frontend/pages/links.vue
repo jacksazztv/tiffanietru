@@ -63,7 +63,7 @@ export default {
                 },
                 {
                     name: 'Instagram',
-                    url: 'https://www.instagram.com/foxyfurytv',
+                    url: 'https://www.instagram.com/tiffanietru.co',
                     iconClasses: ['fab', 'instagram'],
                     bgColor: '#f00075'
                 },

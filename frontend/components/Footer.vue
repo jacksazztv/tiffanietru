@@ -36,11 +36,11 @@
             <p>Don't forget to follow me on all my social media!</p>
             <ul class="social-links">
               <li><a href="https://twitch.tv/foxyfurytv"><font-awesome-icon :icon="['fab', 'twitch']" /></a></li>
-              <li><a href="https://www.instagram.com/foxyfurytv"><font-awesome-icon :icon="['fab', 'instagram']" /></a></li>
+              <li><a href="https://www.instagram.com/tiffanietru.co"><font-awesome-icon :icon="['fab', 'instagram']" /></a></li>
               <li><a href="https://twitter.com/FoxyFury"><font-awesome-icon :icon="['fab', 'twitter']" /></a></li>
               <li><a href="https://www.youtube.com/channel/UCFKGBwzld3DoJEMfHt-PqlA"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
               <li><a href="https://www.patreon.com/asmrtiff"><font-awesome-icon :icon="['fab', 'patreon']" /></a></li>
-              <li><a href="https://onlyfans.com/foxyfury"><font-awesome-icon :icon="['fa', 'lock']" /></a></li>
+              <li><a href="https://onlyfans.com/petitetiff"><font-awesome-icon :icon="['fa', 'lock']" /></a></li>
             </ul>
           </b-col>
         </b-row>
