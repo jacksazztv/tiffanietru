@@ -5,7 +5,7 @@
         class="overflow-hidden shadow-sm mb-4">
         <b-row no-gutters>
             <b-col lg="5">
-                <nuxt-link class="post-link" :to="`/writings/${slug}`">
+                <nuxt-link class="post-link" :to="`/writings/${post.slug}`">
                     <b-card-img-lazy :width="post.image.width" :height="post.image.height" :src="apiUrl + post.image.url" :alt="post.title" class="rounded-0 h-100"></b-card-img-lazy>
                 </nuxt-link>
             </b-col>
