@@ -14,35 +14,31 @@
             <nav>
                 <b-nav vertical>
                     <b-nav-item to="/" exact-active-class="active">
-                    Home
+                      Home
                     </b-nav-item>
                     <b-nav-item to="/about" active-class="active">
-                    About
+                      About
                     </b-nav-item>
-                    <b-nav-item-dropdown
-                      :toggle-class="['toggle-custom', { active: tarotMenuActive }]"
-                      text="Tarot">
-                      <b-dropdown-item to="/what-is-tarot">
-                          What is Tarot?
-                      </b-dropdown-item>
-                      <b-dropdown-item to="/horoscopes">
-                          Horoscopes
-                      </b-dropdown-item>
-                      <b-dropdown-item to="/commissions">
-                          Commissions
-                      </b-dropdown-item>
-                      <b-dropdown-item to="/testimonials">
-                          Testimonials
-                      </b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <b-nav-item to="/what-is-tarot" active-class="active">
+                      What is Tarot?
+                    </b-nav-item>
+                    <b-nav-item to="/horoscopes" active-class="active">
+                      Horoscopes
+                    </b-nav-item>
+                    <b-nav-item to="/commissions" active-class="active">
+                      Commissions
+                    </b-nav-item>
+                    <b-nav-item to="/testimonials" active-class="active">
+                      Testimonials
+                    </b-nav-item>
                     <b-nav-item to="/writings" active-class="active">
-                        Writings
+                      Writings
                     </b-nav-item>
                     <b-nav-item to="/links" active-class="active">
-                        Links
+                      Links
                     </b-nav-item>
                     <b-nav-item to="/cart" active-class="active">
-                        Cart <span v-if="numberOfItems">({{ numberOfItems }})</span>
+                      Cart <span v-if="numberOfItems">({{ numberOfItems }})</span>
                     </b-nav-item>
                 </b-nav>
             </nav>
