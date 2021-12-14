@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "shop_items",
   "info": {
-    "name": "Shop Item"
+    "name": "Shop Item",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "name": {
@@ -39,10 +41,6 @@
       ],
       "default": "Digital",
       "required": true
-    },
-    "portfolios": {
-      "collection": "portfolio",
-      "private": true
     },
     "slug": {
       "type": "uid",
