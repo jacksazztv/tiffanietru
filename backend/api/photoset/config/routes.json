@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/portfolios",
-      "handler": "portfolio.find",
+      "path": "/photosets",
+      "handler": "photoset.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/portfolios/count",
-      "handler": "portfolio.count",
+      "path": "/photosets/count",
+      "handler": "photoset.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/portfolios/:id",
-      "handler": "portfolio.findOne",
+      "path": "/photosets/:id",
+      "handler": "photoset.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/portfolios",
-      "handler": "portfolio.create",
+      "path": "/photosets",
+      "handler": "photoset.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/portfolios/:id",
-      "handler": "portfolio.update",
+      "path": "/photosets/:id",
+      "handler": "photoset.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/portfolios/:id",
-      "handler": "portfolio.delete",
+      "path": "/photosets/:id",
+      "handler": "photoset.delete",
       "config": {
         "policies": []
       }
