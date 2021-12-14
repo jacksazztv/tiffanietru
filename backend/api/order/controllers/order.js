@@ -208,4 +208,35 @@ module.exports = {
 
         return entities.map(entity => sanitizeEntity(entity, { model:  strapi.models.order }));
     },
+    /**
+     * Retrieve user's owned portfolios from orders
+     *
+     * @return {Array}
+     */
+    async findMyPortfolios(ctx) {
+        let entities;
+
+        if (!ctx.state.user) {
+            return ctx.unauthorized('Unauthorized!');
+        }
+
+        ctx.query = {
+            ...ctx.query,
+            'user.id': ctx.state.user.id,
+            type: 'Digital'
+        };
+
+        if (ctx.query._q) {
+            entities = await strapi.services.order.search(ctx.query);
+        } else {
+            entities = await strapi.services.order.find(ctx.query);
+        }
+
+        let portfolios = [];
+        entities.forEach(entity => {
+            portfolios = portfolios.concat(entity.portfolios);
+        });
+
+        return portfolios.map(entity => sanitizeEntity(entity, { model: strapi.models.portfolio }));
+    }
 };
